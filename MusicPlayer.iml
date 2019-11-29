@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/httpcomponents-client-4.5.10-bin/httpcomponents-client-4.5.10/lib/commons-codec-1.11.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/httpcomponents-client-4.5.10-bin/httpcomponents-client-4.5.10/lib/commons-logging-1.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/httpcomponents-client-4.5.10-bin/httpcomponents-client-4.5.10/lib/fluent-hc-4.5.10.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/httpcomponents-client-4.5.10-bin/httpcomponents-client-4.5.10/lib/httpclient-4.5.10.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/httpcomponents-client-4.5.10-bin/httpcomponents-client-4.5.10/lib/httpclient-osgi-4.5.10.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/httpcomponents-client-4.5.10-bin/httpcomponents-client-4.5.10/lib/httpclient-cache-4.5.10.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/httpcomponents-client-4.5.10-bin/httpcomponents-client-4.5.10/lib/httpclient-win-4.5.10.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/httpcomponents-client-4.5.10-bin/httpcomponents-client-4.5.10/lib/httpcore-4.4.12.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/httpcomponents-client-4.5.10-bin/httpcomponents-client-4.5.10/lib/httpmime-4.5.10.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/httpcomponents-client-4.5.10-bin/httpcomponents-client-4.5.10/lib/jna-4.5.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/httpcomponents-client-4.5.10-bin/httpcomponents-client-4.5.10/lib/jna-platform-4.5.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/httpcomponents-core-4.4.12-bin/httpcomponents-core-4.4.12/lib/commons-cli-1.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/httpcomponents-core-4.4.12-bin/httpcomponents-core-4.4.12/lib/httpcore-4.4.12.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/httpcomponents-core-4.4.12-bin/httpcomponents-core-4.4.12/lib/httpcore-ab-4.4.12.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/httpcomponents-core-4.4.12-bin/httpcomponents-core-4.4.12/lib/httpcore-nio-4.4.12.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/httpcomponents-core-4.4.12-bin/httpcomponents-core-4.4.12/lib/httpcore-osgi-4.4.12.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/httpcomponents-asyncclient-4.1.4-bin/httpcomponents-asyncclient-4.1.4/lib/commons-codec-1.10.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/httpcomponents-asyncclient-4.1.4-bin/httpcomponents-asyncclient-4.1.4/lib/commons-logging-1.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/httpcomponents-asyncclient-4.1.4-bin/httpcomponents-asyncclient-4.1.4/lib/httpasyncclient-4.1.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/httpcomponents-asyncclient-4.1.4-bin/httpcomponents-asyncclient-4.1.4/lib/httpasyncclient-cache-4.1.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/httpcomponents-asyncclient-4.1.4-bin/httpcomponents-asyncclient-4.1.4/lib/httpclient-4.5.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/httpcomponents-asyncclient-4.1.4-bin/httpcomponents-asyncclient-4.1.4/lib/httpclient-cache-4.5.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/httpcomponents-asyncclient-4.1.4-bin/httpcomponents-asyncclient-4.1.4/lib/httpcore-4.4.10.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/httpcomponents-asyncclient-4.1.4-bin/httpcomponents-asyncclient-4.1.4/lib/httpcore-nio-4.4.10.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES />
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://E:/大二上/JAVA/okhttp-okhttp_3.12.x/okhttp-apache/src/main/java" />
+          <root url="file://E:/大二上/JAVA/okhttp-okhttp_3.12.x/okhttp-apache/src/test/java" />
+          <root url="file://E:/大二上/JAVA/okhttp-okhttp_3.12.x/okhttp-dnsoverhttps/src/main/java" />
+          <root url="file://E:/大二上/JAVA/okhttp-okhttp_3.12.x/okhttp-dnsoverhttps/src/test/java" />
+          <root url="file://E:/大二上/JAVA/okhttp-okhttp_3.12.x/okhttp-hpacktests/src/test/java" />
+          <root url="file://E:/大二上/JAVA/okhttp-okhttp_3.12.x/okhttp-logging-interceptor/src/main/java" />
+          <root url="file://E:/大二上/JAVA/okhttp-okhttp_3.12.x/okhttp-logging-interceptor/src/test/java" />
+          <root url="file://E:/大二上/JAVA/okhttp-okhttp_3.12.x/okhttp-sse/src/main/java" />
+          <root url="file://E:/大二上/JAVA/okhttp-okhttp_3.12.x/okhttp-sse/src/test/java" />
+          <root url="file://E:/大二上/JAVA/okhttp-okhttp_3.12.x/okhttp-testing-support/src/main/java" />
+          <root url="file://E:/大二上/JAVA/okhttp-okhttp_3.12.x/okhttp-tests/src/main/java" />
+          <root url="file://E:/大二上/JAVA/okhttp-okhttp_3.12.x/okhttp-tests/src/test/java" />
+          <root url="file://E:/大二上/JAVA/okhttp-okhttp_3.12.x/okhttp-tls/src/main/java" />
+          <root url="file://E:/大二上/JAVA/okhttp-okhttp_3.12.x/okhttp-tls/src/test/java" />
+          <root url="file://E:/大二上/JAVA/okhttp-okhttp_3.12.x/okhttp-urlconnection/src/main/java" />
+          <root url="file://E:/大二上/JAVA/okhttp-okhttp_3.12.x/okhttp-urlconnection/src/test/java" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/okhttp-4.2.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/okhttp-4.0.0-alpha01.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/jar_files.zip!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/jar_files/annotations-13.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/jar_files/kotlin-stdlib-1.3.50.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/kotlin-stdlib-common-1.2.61.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/okio-2.2.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/json-20180813.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/大二上/JAVA/gson-2.8.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+  </component>
+</module>
