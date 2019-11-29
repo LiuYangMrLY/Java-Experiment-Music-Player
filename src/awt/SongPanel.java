@@ -38,7 +38,7 @@ public class SongPanel extends JPanel implements MouseListener {
         else color = Color.white;
         setBackground(color);
 
-        //ÌîÊı¾İ
+        //å¡«æ•°æ®
         JLabel lb_name = new JLabel(song);
         lb_name.setPreferredSize(new Dimension(330,30));
         JLabel lb_player = new JLabel(player);
@@ -73,9 +73,9 @@ public class SongPanel extends JPanel implements MouseListener {
     @Override
     public void mouseClicked(java.awt.event.MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON3){
-            System.out.println("ÓÒ¼ü±»µã»÷");
+            System.out.println("å³é”®è¢«ç‚¹å‡»");
         }
-        else if (e.getButton() == MouseEvent.BUTTON1) System.out.println("×ó¼ü±»µã»÷");
+        else if (e.getButton() == MouseEvent.BUTTON1) System.out.println("å·¦é”®è¢«ç‚¹å‡»");
     }
 
     @Override

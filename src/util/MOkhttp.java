@@ -40,7 +40,7 @@ public class MOkhttp {
         }
 
         OkHttpClient okHttpClient = new OkHttpClient();
-        //异步请求
+        //寮傛璇锋眰
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -58,18 +58,18 @@ public class MOkhttp {
 
 
 
-        //开启现线程发起网络请求
+        //寮�鍚幇绾跨▼鍙戣捣缃戠粶璇锋眰
 //        new Thread(new Runnable(){
 //            @Override
 //            public void run(){
 //                try{
 //                    OkHttpClient client = new OkHttpClient.Builder()
-//                            .retryOnConnectionFailure(true)  //网查解决end of the stream问题
+//                            .retryOnConnectionFailure(true)  //缃戞煡瑙ｅ喅end of the stream闂
 //                            .connectTimeout(10, TimeUnit.SECONDS)
 //                            .readTimeout(20,TimeUnit.SECONDS)
 //                            .build();
 ////                    FormBody.Builder builder = new FormBody.Builder();
-////                    Log.d("联网时的新闻id",newsId);
+////                    Log.d("鑱旂綉鏃剁殑鏂伴椈id",newsId);
 ////                    builder.add("id", newsId);
 ////                    builder.add("operaType", "1");
 ////                    builder.add("session", session);

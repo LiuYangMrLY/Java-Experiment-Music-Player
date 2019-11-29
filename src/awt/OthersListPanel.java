@@ -13,8 +13,8 @@ import java.awt.event.MouseListener;
 
 public class OthersListPanel extends JPanel implements MouseListener {
     private String picPath = "src/pic/others_list.png";
-    private String listName = "ÄÇĞ©ÄêµÄ¸ñÀ³ÃÀ";
-    private String userName = "·ÛÉ«ÁúÀàÎïÖÖ";
+    private String listName = "é‚£äº›å¹´çš„æ ¼è±ç¾";
+    private String userName = "ç²‰è‰²é¾™ç±»ç‰©ç§";
     private JLabel lb_pic = new JLabel();
     private JLabel lb_listName = new JLabel();
     private JLabel lb_userName = new JLabel();
@@ -111,7 +111,7 @@ public class OthersListPanel extends JPanel implements MouseListener {
         MainView.mJpanel.add(MainView.center,BorderLayout.CENTER);
 
         MainView.mJpanel.updateUI();
-        System.out.println("µã»÷ÁË¸èµ¥");
+        System.out.println("ç‚¹å‡»äº†æ­Œå•");
 
     }
 

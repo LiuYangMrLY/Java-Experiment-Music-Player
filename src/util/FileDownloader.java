@@ -27,11 +27,11 @@ public class FileDownloader {
         }
 
         OkHttpClient okHttpClient = new OkHttpClient();
-        //Òì²½ÇëÇó
+        //å¼‚æ­¥è¯·æ±‚
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                // ÏÂÔØÊ§°Ü¼àÌı»Øµ÷
+                // ä¸‹è½½å¤±è´¥ç›‘å¬å›è°ƒ
                 listener.onDownloadFailed(e);
             }
 
@@ -43,7 +43,7 @@ public class FileDownloader {
                 int len = 0;
                 FileOutputStream fos = null;
 
-                //´¢´æÏÂÔØÎÄ¼şµÄÄ¿Â¼
+                //å‚¨å­˜ä¸‹è½½æ–‡ä»¶çš„ç›®å½•
                 File dir = new File(destFileDir);
                 if (!dir.exists()) {
                     dir.mkdirs();
@@ -60,12 +60,12 @@ public class FileDownloader {
                         fos.write(buf, 0, len);
                         sum += len;
                         int progress = (int) (sum * 1.0f / total * 100);
-                        //ÏÂÔØÖĞ¸üĞÂ½ø¶ÈÌõ
+                        //ä¸‹è½½ä¸­æ›´æ–°è¿›åº¦æ¡
                         listener.onDownloading(progress);
                     }
 
                     fos.flush();
-                    //ÏÂÔØÍê³É
+                    //ä¸‹è½½å®Œæˆ
                     listener.onDownloadSuccess(file);
                 } catch (Exception e) {
                     listener.onDownloadFailed(e);
@@ -92,17 +92,17 @@ public class FileDownloader {
     public interface OnDownloadListener{
 
         /**
-         * ÏÂÔØ³É¹¦Ö®ºóµÄÎÄ¼ş
+         * ä¸‹è½½æˆåŠŸä¹‹åçš„æ–‡ä»¶
          */
         void onDownloadSuccess(File file);
 
         /**
-         * ÏÂÔØ½ø¶È
+         * ä¸‹è½½è¿›åº¦
          */
         void onDownloading(int progress);
 
         /**
-         * ÏÂÔØÒì³£ĞÅÏ¢
+         * ä¸‹è½½å¼‚å¸¸ä¿¡æ¯
          */
 
         void onDownloadFailed(Exception e);

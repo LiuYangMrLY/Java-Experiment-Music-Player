@@ -30,7 +30,6 @@ public class MSliderUI extends BasicSliderUI {
     @Override
     public void paintTrack(Graphics g){
         Graphics2D g2d=(Graphics2D) g;
-// …Ë∂®Ω•±‰
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_OFF);
         g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,0.3f));

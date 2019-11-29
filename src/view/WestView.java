@@ -27,34 +27,34 @@ public class WestView extends JPanel {
         JPanel jPanel1 = new JPanel();
         jPanel1.setLayout(new FlowLayout(FlowLayout.LEFT));
         jPanel1.setBackground(Color.white);
-        MLabel lb_others = new MLabel("others","±ğÈË¶¼ÔÚÌı","src/pic/others.png");
+        MLabel lb_others = new MLabel("others","åˆ«äººéƒ½åœ¨å¬","src/pic/others.png");
         lb_others.setBorder(new EmptyBorder(0,3,0,0));
         jPanel1.add(lb_others);
-        jPanel1.add(new MLabel("download","ÏÂÔØ","src/pic/download.png"));
+        jPanel1.add(new MLabel("download","ä¸‹è½½","src/pic/download.png"));
         jPanel1.setPreferredSize(new Dimension(200,100));
 
 
 
 
 
-        //×Ô¼ºµÄ¸èµ¥ÁĞ±í
+        //è‡ªå·±çš„æ­Œå•åˆ—è¡¨
         JPanel jPanel = new JPanel();
         jPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         jPanel.setBackground(Color.white);
         //jPanel.setPreferredSize(new Dimension(200, 900));
 
-        MLabel lb_newList = new MLabel("nList","ĞÂ½¨¸èµ¥","src/pic/add.png");
+        MLabel lb_newList = new MLabel("nList","æ–°å»ºæ­Œå•","src/pic/add.png");
         lb_newList.setBorder(new EmptyBorder(1,2,1,1));
         lb_newList.setHorizontalAlignment(SwingConstants.LEFT);
 
         jPanel.add(lb_newList);
         int i = 0;
         for (i = 0; i < 20;i++)
-        jPanel.add(new MLabel("list","¸èµ¥" + i,"src/pic/list.png"));
+        jPanel.add(new MLabel("list","æ­Œå•" + i,"src/pic/list.png"));
 
         jPanel.setPreferredSize(new Dimension(200,40 * (i + 4)));
 
-        //±£Ö¤¿í¸ß´óÓÚJScrollPaneµÄ¿í¸ß
+        //ä¿è¯å®½é«˜å¤§äºJScrollPaneçš„å®½é«˜
         MScrollPane scrollPane = new MScrollPane(jPanel);
         scrollPane.setPreferredSize(new Dimension(WIDTH - 15,300));
 

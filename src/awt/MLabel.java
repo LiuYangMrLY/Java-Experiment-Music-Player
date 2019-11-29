@@ -49,7 +49,7 @@ public class MLabel extends JLabel implements MouseListener {
                 MainView.mJpanel.add(MainView.center,BorderLayout.CENTER);
 
                 MainView.mJpanel.updateUI();
-                System.out.println("µã»÷ÁË¸èµ¥");
+                System.out.println("ç‚¹å‡»äº†æ­Œå•");
                 break;
             case "others":
                 //MainView.mJpanel.removeAll();
@@ -60,7 +60,7 @@ public class MLabel extends JLabel implements MouseListener {
                 MainView.center = new CenterOthersView();
                 MainView.mJpanel.add(MainView.center,BorderLayout.CENTER);
                 MainView.mJpanel.updateUI();
-                System.out.println("µã»÷ÁËÍÆ¼ö");
+                System.out.println("ç‚¹å‡»äº†æ¨è");
                 break;
         }
 

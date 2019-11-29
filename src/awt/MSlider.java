@@ -48,7 +48,7 @@ public class MSlider extends JSlider implements Runnable{
         }
         while (timer.isRunning()) {
             if (Thread.currentThread().isInterrupted()) {
-                //´¦ÀíÖĞ¶ÏÂß¼­
+                //å¤„ç†ä¸­æ–­é€»è¾‘
                 timer.stop();
                 break;
                 //Thread.currentThread().interrupted();

@@ -13,8 +13,8 @@ public class CenterListView extends JPanel {
     private JPanel mPanel = new JPanel();
     private int WIDTH = 1200;
     private int HEIGHT = 820;
-    private String listName = "我喜欢的音乐";
-    private String userName = "本地";
+    private String listName = "鎴戝枩娆㈢殑闊充箰";
+    private String userName = "鏈湴";
     private ArrayList<SongPanel> songList = new ArrayList<>();
 
 
@@ -26,11 +26,11 @@ public class CenterListView extends JPanel {
         mPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         mPanel.setBackground(new Color(245,245,245));
 
-        //存放歌单图片
+        //瀛樻斁姝屽崟鍥剧墖
         lb_list_pic.setBorder(new EmptyBorder(0,60,0,0));
         mPanel.add(lb_list_pic);
 
-        //中间的分割线
+        //涓棿鐨勫垎鍓茬嚎
 //        JLabel aaa = new JLabel();
 //        aaa.setPreferredSize(new Dimension(2,130));
 //        aaa.setOpaque(true);
@@ -38,14 +38,14 @@ public class CenterListView extends JPanel {
 //        aaa.setBackground(new Color(187, 185, 180, 135));
 //        mPanel.add(aaa);
 
-        //jPanel1用来放歌单名和用户名
+        //jPanel1鐢ㄦ潵鏀炬瓕鍗曞悕鍜岀敤鎴峰悕
         JPanel jPanel1 = new JPanel();
         jPanel1.setBackground(new Color(245,245,245));
         jPanel1.setPreferredSize(new Dimension(300,100));
         jPanel1.setLayout(new FlowLayout(FlowLayout.LEFT));
         jPanel1.setBorder(new EmptyBorder(0,0,0,0));
 
-        JLabel lb_user = new JLabel("创建者：" + userName);
+        JLabel lb_user = new JLabel("鍒涘缓鑰咃細" + userName);
         JLabel lb_list = new JLabel(listName);
         lb_user.setPreferredSize(new Dimension(300,60));
         lb_list.setPreferredSize(new Dimension(300,40));
@@ -63,7 +63,7 @@ public class CenterListView extends JPanel {
 
         mPanel.add(jPanel1);
 
-        //歌曲列表
+        //姝屾洸鍒楄〃
         JPanel jPanel = new JPanel();
         FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
         flowLayout.setVgap(0);

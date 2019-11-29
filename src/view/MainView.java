@@ -23,7 +23,7 @@ public class MainView extends JFrame{
     public static void main(String[] args){
         MainView mainView = new MainView("MusicPlayer");
         mainView.setSize(1450, 900);
-        mainView.setLocationRelativeTo(null);// 把窗口位置设置到屏幕中心
+        mainView.setLocationRelativeTo(null);// 鎶婄獥鍙ｄ綅缃缃埌灞忓箷涓績
         mainView.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         mJpanel.setBackground(new Color(245,245,245));
