@@ -4,13 +4,12 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import org.apache.commons.codec.digest.DigestUtils;
 
-import javax.swing.*;
 import java.io.*;
 import java.net.MalformedURLException;
 
 public class Music {
     private File file = null;
-    private String MD5;
+    private String uuid;
     private String path;
 
     private String sheetID;
@@ -18,7 +17,7 @@ public class Music {
 
     // 前端显示 music的
     //         歌名  歌手  专辑  时长
-    private String title;
+    private String name;
     private String singer;
     private String album;
     private double duration = 0.0;
@@ -27,7 +26,7 @@ public class Music {
 
     public Music(String sheetID, String path) {
         this.file = new File(path);
-        this.MD5 = this.generateMD5();
+        this.uuid = this.generateMD5();
         this.path = path;
 
         this.sheetID = sheetID;
@@ -41,7 +40,7 @@ public class Music {
             mediaPlayer.setOnReady(new Runnable() {
                 @Override
                 public void run() {
-                    title = (String) media.getMetadata().get("title");
+                    name = (String) media.getMetadata().get("name");
                     singer = (String) media.getMetadata().get("artist");
                     album = (String) media.getMetadata().get("album");
                     duration = media.getDuration().toSeconds();
@@ -58,8 +57,8 @@ public class Music {
         }
     }
 
-    public String getTitle() {
-        return this.title;
+    public String getName() {
+        return this.name;
     }
 
     public String getSinger() {
@@ -78,8 +77,8 @@ public class Music {
         return this.sheetName;
     }
 
-    public String getMD5() {
-        return this.MD5;
+    public String getUuid() {
+        return this.uuid;
     }
 
     public String getPath() {
@@ -87,8 +86,8 @@ public class Music {
     }
 
     /**
-     * 生成歌曲的 MD5
-     * @return MD5
+     * 生成歌曲的 uuid
+     * @return uuid
      */
     private String generateMD5() {
         String str = null;
@@ -106,7 +105,7 @@ public class Music {
 //        com.sun.javafx.application.PlatformImpl.startup(()->{});
 //        Music music = new Music("w", "1", "华语群星-爸爸去哪儿.mp3");
 //
-//        System.out.println(music.getMD5());
+//        System.out.println(music.getUuid());
 //        JFrame frame = new JFrame(music.getSinger());
 //        frame.setSize(200, 200);
 //        frame.setLocationRelativeTo(null);
