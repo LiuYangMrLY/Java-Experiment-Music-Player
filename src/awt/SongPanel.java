@@ -3,6 +3,8 @@ package awt;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.nio.file.Path;
@@ -85,7 +87,9 @@ public class SongPanel extends JPanel implements MouseListener {
 
     @Override
     public void mouseReleased(java.awt.event.MouseEvent e) {
-
+        if (e.isMetaDown()) {
+            showPopupMenu(e.getComponent(), e.getX(), e.getY());
+        }
     }
 
     @Override
@@ -97,4 +101,24 @@ public class SongPanel extends JPanel implements MouseListener {
     public void mouseExited(java.awt.event.MouseEvent e) {
         this.setBackground(color);
     }
+
+    private static void showPopupMenu(Component invoker, int x, int y) {
+        // 创建 弹出菜单 对象
+        JPopupMenu popupMenu = new JPopupMenu();
+        // 创建 一级菜单
+        JMenuItem deleteMenuItem = new JMenuItem("删除");
+
+        popupMenu.add(deleteMenuItem);
+
+        // 添加菜单项的点击监听器
+        deleteMenuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("复制 被点击");
+            }
+        });
+        // 在指定位置显示弹出菜单
+        popupMenu.show(invoker, x, y);
+    }
+
 }
