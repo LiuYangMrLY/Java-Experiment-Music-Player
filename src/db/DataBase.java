@@ -5,7 +5,9 @@ import org.jaudiotagger.audio.exceptions.CannotReadException;
 import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
 import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
 import org.jaudiotagger.tag.TagException;
+import util.MD5Utils;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
@@ -154,6 +156,27 @@ public class DataBase {
         return name;
     }
 
+    /**
+     * 添加歌曲
+     * @param sheetID 所属歌单的id
+     * @param file 歌曲文件
+     */
+    public static void addMusic(String sheetID, File file) {
+        String ADD_MUSIC_SQL = "INSERT INTO music VALUES (?, ?, ?, ?)";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(ADD_MUSIC_SQL);
+            preparedStatement.setString(1, file.getName());
+            preparedStatement.setString(2, sheetID);
+            preparedStatement.setString(3, MD5Utils.MD5Encode(file));
+            preparedStatement.setString(4, file.getAbsolutePath());
+
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * 结束程序时调用
@@ -214,6 +237,8 @@ public class DataBase {
 
     }
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(DataBase.getAllSheets().toArray()));
+//        System.out.println(Arrays.toString(DataBase.getAllSheets().toArray()));
+        File file = new File("test.txt");
+        DataBase.addMusic("1", file);
     }
 }

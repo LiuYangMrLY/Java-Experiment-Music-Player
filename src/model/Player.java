@@ -44,17 +44,68 @@ public class Player {
     public void selectSheet(ArrayList<Music> sheet, int index) {
         this.musicList = sheet;
 
-        this.selectSong(this.musicList.get(index).getPath(), index);
+        this.selectSong(index);
     }
 
 
+//    /**
+//     * 选择本地 music 并自动播放
+//     * @param path 本地歌曲的路径
+//     * @return true   成功
+//     *         false  失败
+//     */
+//    public boolean selectSong(String path, int index) {
+//        this.index = index;
+//
+//        // 清除之前被选中的音乐
+//        this.media = null;
+//        if (this.mediaPlayer != null) {
+//            this.mediaPlayer.dispose();
+//            this.mediaPlayer = null;
+//        }
+//
+//        try {
+//            URL url = new File(path).toURI().toURL();
+//            this.media = new Media(url.toExternalForm());
+//            this.mediaPlayer = new MediaPlayer(media);
+//
+//            // 保持之前的音量
+//            this.mediaPlayer.setVolume(this.volume);
+//            // music 从头开始
+//            this.mediaPlayer.setStartTime(Duration.seconds(0));
+//            // music 自动播放
+//            this.mediaPlayer.setAutoPlay(true);
+//
+//            this.mediaPlayer.setOnReady(new Runnable() {
+//                @Override
+//                public void run() {
+//                    duration = media.getDuration().toSeconds();
+//                }
+//            });
+//
+//
+//            this.mediaPlayer.setOnEndOfMedia(new Runnable() {
+//                @Override
+//                public void run() {
+//                    Player.getInstance().next();
+//                }
+//            });
+//
+//        } catch (MalformedURLException e) {
+//            e.printStackTrace();
+//            return false;
+//        }
+//
+//        return true;
+//    }
+
     /**
      * 选择本地 music 并自动播放
-     * @param path 本地歌曲的路径
+     * @param index 播放歌曲在歌单中的索引
      * @return true   成功
      *         false  失败
      */
-    public boolean selectSong(String path, int index) {
+    public boolean selectSong(int index) {
         this.index = index;
 
         // 清除之前被选中的音乐
@@ -65,7 +116,7 @@ public class Player {
         }
 
         try {
-            URL url = new File(path).toURI().toURL();
+            URL url = new File(this.musicList.get(index).getPath()).toURI().toURL();
             this.media = new Media(url.toExternalForm());
             this.mediaPlayer = new MediaPlayer(media);
 
@@ -132,7 +183,7 @@ public class Player {
      * 当前是否在播放音乐
      * @return true   Playing
      *         false  No selected music
-     *                Stopped
+     *                Stop
      */
     public boolean isPlaying() {
         if (this.media == null || this.mediaPlayer == null) {
@@ -273,7 +324,7 @@ public class Player {
         if (this.mode == Mode.ORDER) {
             int toPlayIndex = (this.index + 1) % this.musicList.size();
 
-            this.selectSong(this.musicList.get(toPlayIndex).getPath(), toPlayIndex);
+            this.selectSong(toPlayIndex);
             return;
         }
 
@@ -282,13 +333,13 @@ public class Player {
             Random random = new Random();
             int toPlayIndex = random.nextInt(this.musicList.size());
 
-            this.selectSong(this.musicList.get(toPlayIndex).getPath(), toPlayIndex);
+            this.selectSong(toPlayIndex);
             return;
         }
 
         // 单曲循环
         if (this.mode == Mode.SINGLE) {
-            this.selectSong(this.musicList.get(this.index).getPath(), this.index);
+            this.selectSong(this.index);
             return;
         }
     }

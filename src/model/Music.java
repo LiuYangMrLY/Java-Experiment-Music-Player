@@ -1,5 +1,6 @@
 package model;
 
+import db.DataBase;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -100,6 +101,16 @@ public class Music {
         return str;
     }
 
+    /**
+     * 选择歌曲
+     * @param sheetID 所属歌单的id
+     * @param files 歌曲文件
+     */
+    public static void selectMusics(String sheetID, File[] files) {
+        for (File file: files) {
+            DataBase.addMusic(sheetID, file);
+        }
+    }
 
 //    public static void main(String[] args) throws InterruptedException {
 //        com.sun.javafx.application.PlatformImpl.startup(()->{});

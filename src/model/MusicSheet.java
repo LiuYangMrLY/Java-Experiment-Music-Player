@@ -1,5 +1,10 @@
 package model;
 
+import db.DataBase;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class MusicSheet {
     private String creator;
     private String creatorId;
@@ -8,6 +13,47 @@ public class MusicSheet {
     private String name;
     private String picture;
     private String uuid;
+
+//    public MusicSheet(String id, String name, Date date, String owner, String picture) {
+//        this.id = Integer.parseInt(id);
+//        this.name = name;
+//        this.date = date;
+//        this.owner = owner;
+//        this.picture = picture;
+//    }
+    public MusicSheet() {}
+
+    public MusicSheet(String id, String name, String date, String creator, String picture) {
+        this.id = Integer.parseInt(id);
+        this.name = name;
+        this.dateCreated = date;
+        this.creator = creator;
+        this.picture = picture;
+    }
+
+    /**
+     * 获取所有的歌单
+     * @return [sheet, ...]
+     */
+    public static ArrayList<MusicSheet> getSheets() {
+        ArrayList<MusicSheet> result = new ArrayList<>();
+
+        ArrayList<HashMap<String, String>> array = DataBase.getAllSheets();
+        for (HashMap<String, String> map: array) {
+            result.add(new MusicSheet(map.get("id"), map.get("name"),
+                    map.get("date"), map.get("owner"), map.get("picture")));
+        }
+
+        return result;
+    }
+
+    /**
+     * 获取当前歌单的所有歌曲
+     * @return [music, ...]
+     */
+    public ArrayList<Music> getMusicInThisSheet() {
+        return DataBase.getMusicOfTheSheet(Integer.toString(this.id));
+    }
 
     public String getCreator() {
         return creator;
