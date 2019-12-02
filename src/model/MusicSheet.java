@@ -2,6 +2,7 @@ package model;
 
 import db.DataBase;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -13,6 +14,8 @@ public class MusicSheet {
     private String name;
     private String picture;
     private String uuid;
+
+    private ArrayList<Music> musicArray = new ArrayList<>();
 
 //    public MusicSheet(String id, String name, Date date, String owner, String picture) {
 //        this.id = Integer.parseInt(id);
@@ -53,6 +56,10 @@ public class MusicSheet {
      */
     public ArrayList<Music> getMusicInThisSheet() {
         return DataBase.getMusicOfTheSheet(Integer.toString(this.id));
+    }
+
+    public void addMusic(File file) {
+        DataBase.addMusic(Integer.toString(this.id), file);
     }
 
     public String getCreator() {
@@ -109,5 +116,9 @@ public class MusicSheet {
 
     public void setUuid(String uuid) {
         this.uuid = uuid;
+    }
+
+    public void addToArray(Music music) {
+        this.musicArray.add(music);
     }
 }

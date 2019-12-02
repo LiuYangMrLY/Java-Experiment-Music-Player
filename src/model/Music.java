@@ -25,6 +25,14 @@ public class Music {
 
 //    private Image image; // 待定 TODO
 
+    private boolean canPlay = true;
+
+    public Music(String name, String uuid, boolean canPlay) {
+        this.name = name;
+        this.uuid = uuid;
+        this.canPlay = canPlay;
+    }
+
     public Music(String sheetID, String path) {
         this.file = new File(path);
         this.uuid = this.generateMD5();
