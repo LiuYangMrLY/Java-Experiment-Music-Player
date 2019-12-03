@@ -25,6 +25,7 @@ public class MusicSheet {
 //        this.date = date;
 //        this.owner = owner;
 //        this.picture = picture;
+
     public void test() {
         System.out.println(this.musicArray.get(0).getName());
     }
@@ -39,6 +40,10 @@ public class MusicSheet {
      * @param picture
      */
     public MusicSheet(String name, String creator, String creatorId, String picture) {
+        if (name == null) {
+            name = "未命名的歌单";
+        }
+
         this.name = name;
         this.creator = creator;
         this.creatorId = creatorId;
@@ -89,14 +94,31 @@ public class MusicSheet {
 
     /**
      * 删除当前歌单中指定索引的歌曲
-     * @param index
+     * @param index 当前歌单中歌曲的索引
      */
     public void deleteMusic(int index) {
         Music deletedMusic = this.musicArray.remove(index);
+        DataBase.deleteMusic(Integer.toString(this.id), deletedMusic);
+
     }
 
+    /**
+     * 向当前歌单中添加歌曲
+     * @param file
+     */
     public void addMusic(File file) {
         DataBase.addMusic(Integer.toString(this.id), file);
+
+    }
+
+    /**
+     * 
+     * @param files
+     */
+    public void addMusic(File[] files) {
+        for (File file: files) {
+            DataBase.addMusic(Integer.toString(this.id), file);
+        }
     }
 
     public ArrayList<Music> getMusicArray() {

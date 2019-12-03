@@ -179,6 +179,10 @@ public class DataBase {
         }
     }
 
+    public static void deleteMusicSheet() {
+        String DELETE_SHEET_SQL = "DELETE FROM sheet WHERE ";
+    }
+
 
     /**
      * 添加歌曲
@@ -201,8 +205,23 @@ public class DataBase {
         }
     }
 
+    /**
+     * 删除歌曲
+     * @param sheetID
+     * @param music
+     */
     public static void deleteMusic(String sheetID, Music music) {
+        String DELETE_MUSIC_SQL = "DELETE FROM music WHERE sheet=? AND md5=?";
 
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_MUSIC_SQL);
+            preparedStatement.setString(1, sheetID);
+            preparedStatement.setString(2, music.getUuid());
+
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -269,7 +288,7 @@ public class DataBase {
 //        File file = new File("test.txt");
 //        DataBase.addMusic("1", file);
         //String name, String creator, String creatorId, String picture
-            createMusicSheet(new MusicSheet("1", "1", "1", "1"));
+//            createMusicSheet(new MusicSheet("1", "1", "1", "1"));
 
     }
 }
