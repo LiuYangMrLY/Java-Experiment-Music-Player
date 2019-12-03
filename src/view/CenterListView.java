@@ -239,6 +239,13 @@ public class CenterListView extends JPanel {
 
             musicSheet.addMusic(files);
 
+            MainView.mJpanel.remove(MainView.center);
+            MainView.center = new CenterListView(musicSheet,true);
+            MainView.mJpanel.add(MainView.center,BorderLayout.CENTER);
+
+            MainView.mJpanel.updateUI();
+            System.out.println("点击了歌单");
+
             System.out.println("打开文件: " + file.getAbsolutePath() + "\n\n");
         }
     }

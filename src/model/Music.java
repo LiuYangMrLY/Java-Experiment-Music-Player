@@ -54,6 +54,7 @@ public class Music {
                 @Override
                 public void run() {
                     name = (String) media.getMetadata().get("name");
+                    System.out.println(name);
                     singer = (String) media.getMetadata().get("artist");
                     album = (String) media.getMetadata().get("album");
                     duration = media.getDuration().toSeconds();

@@ -21,6 +21,7 @@ public class MainView extends JFrame{
     }
 
     public static void main(String[] args){
+        com.sun.javafx.application.PlatformImpl.startup(()->{});
         MainView mainView = new MainView("MusicPlayer");
         mainView.setSize(1450, 900);
         mainView.setLocationRelativeTo(null);// 把窗口位置设置到屏幕中心
