@@ -179,8 +179,20 @@ public class DataBase {
         }
     }
 
-    public static void deleteMusicSheet() {
-        String DELETE_SHEET_SQL = "DELETE FROM sheet WHERE ";
+    public static void deleteMusicSheet(MusicSheet sheet) {
+        String DELETE_SHEET_SQL = "DELETE FROM sheet WHERE id=? AND name=?";
+
+        deleteAllMusicOfSheet(Integer.toString(sheet.getId()));
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_SHEET_SQL);
+            preparedStatement.setString(1, Integer.toString(sheet.getId()));
+            preparedStatement.setString(2, sheet.getName());
+
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -217,6 +229,23 @@ public class DataBase {
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_MUSIC_SQL);
             preparedStatement.setString(1, sheetID);
             preparedStatement.setString(2, music.getUuid());
+
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 删除歌单中的所有歌曲
+     * @param sheetID 歌单的ID
+     */
+    public static void deleteAllMusicOfSheet(String sheetID) {
+        String DELETE_ALL_MUSIC_SQL = "DELETE FROM music WHERE sheet=?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_ALL_MUSIC_SQL);
+            preparedStatement.setString(1, sheetID);
 
             preparedStatement.execute();
         } catch (SQLException e) {
