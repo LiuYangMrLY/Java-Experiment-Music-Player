@@ -2,6 +2,8 @@ package view;
 
 import awt.MLabel;
 import awt.MScrollPane;
+import model.Music;
+import model.MusicSheet;
 import sun.plugin.javascript.navig.Image;
 
 import javax.naming.Context;
@@ -14,6 +16,7 @@ public class WestView extends JPanel {
     int WIDTH = 250;
 
     ArrayList<MLabel> mLabels = new ArrayList<>();
+    ArrayList<MusicSheet> musicSheets = new ArrayList<>();
 
 
 
@@ -33,10 +36,6 @@ public class WestView extends JPanel {
         jPanel1.add(new MLabel("download","下载","src/pic/download.png"));
         jPanel1.setPreferredSize(new Dimension(200,100));
 
-
-
-
-
         //自己的歌单列表
         JPanel jPanel = new JPanel();
         jPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -48,9 +47,11 @@ public class WestView extends JPanel {
         lb_newList.setHorizontalAlignment(SwingConstants.LEFT);
 
         jPanel.add(lb_newList);
+
+        musicSheets = MusicSheet.getSheets();
         int i = 0;
-        for (i = 0; i < 20;i++)
-        jPanel.add(new MLabel("list","歌单" + i,"src/pic/list.png"));
+        for (i = 0; i < musicSheets.size();i++)
+            jPanel.add(new MLabel("list",musicSheets.get(i).getName(),"src/pic/list.png"));
 
         jPanel.setPreferredSize(new Dimension(200,40 * (i + 4)));
 

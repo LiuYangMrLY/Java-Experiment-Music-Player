@@ -1,5 +1,7 @@
 package awt;
 
+import model.Music;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -17,17 +19,15 @@ public class SongPanel extends JPanel implements MouseListener {
     private String player;
     private String album;
     private String duration;
-    private int num;
+    private static int num;
     private Color color;
     private int WIDTH;
+    private Music music = new Music();
 
-    public SongPanel(int num, String song, String player, String album, String duration){
+    public SongPanel(int num, Music music){
         super();
         this.num = num;
-        this.album = album;
-        this.duration = duration;
-        this.player = player;
-        this.song = song;
+        this.music = music;
         this.setOpaque(true);
         setFocusable(true);
         requestFocus();
@@ -41,13 +41,13 @@ public class SongPanel extends JPanel implements MouseListener {
         setBackground(color);
 
         //填数据
-        JLabel lb_name = new JLabel(song);
+        JLabel lb_name = new JLabel(music.getName());
         lb_name.setPreferredSize(new Dimension(330,30));
-        JLabel lb_player = new JLabel(player);
+        JLabel lb_player = new JLabel(music.getSinger());
         lb_player.setPreferredSize(new Dimension(330,30));
-        JLabel lb_album = new JLabel(album);
+        JLabel lb_album = new JLabel(music.getAlbum());
         lb_album.setPreferredSize(new Dimension(330,30));
-        JLabel lb_duration = new JLabel(duration);
+        JLabel lb_duration = new JLabel("3:00");
         lb_duration.setPreferredSize(new Dimension(70,30));
         JLabel lb_num = new JLabel(String.valueOf(num));
         lb_num.setPreferredSize(new Dimension(75,30));
