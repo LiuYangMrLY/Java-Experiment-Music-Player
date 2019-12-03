@@ -84,7 +84,15 @@ public class MusicSheet {
      * 保存当前歌单到数据库
      */
     public void saveMusicSheet() {
+        DataBase.createMusicSheet(this);
+    }
 
+    /**
+     * 删除当前歌单中指定索引的歌曲
+     * @param index
+     */
+    public void deleteMusic(int index) {
+        Music deletedMusic = this.musicArray.remove(index);
     }
 
     public void addMusic(File file) {

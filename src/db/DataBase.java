@@ -201,6 +201,10 @@ public class DataBase {
         }
     }
 
+    public static void deleteMusic(String sheetID, Music music) {
+
+    }
+
 
     /**
      * 结束程序时调用
