@@ -4,6 +4,7 @@ import awt.MScrollPane;
 import awt.OthersListPanel;
 import model.MusicSheet;
 import util.MOkhttp;
+import util.MusicSheetChecker;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -26,8 +27,8 @@ public class CenterOthersView extends JPanel {
         this.setBackground(new Color(245,245,245));
 
         System.out.println("okhttp");
-        musicSheets = MOkhttp.getMusicSheetWithOkHttp();
-        musicSheets = MOkhttp.getMusicSheets();
+        musicSheets = MusicSheetChecker.getMusicSheetList();
+        //musicSheets = MOkhttp.getMusicSheets();
         //System.out.println(musicSheets);
 
         for (int i = 0;i <musicSheets.size();i ++){

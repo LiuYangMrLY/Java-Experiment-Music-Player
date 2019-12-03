@@ -3,6 +3,7 @@ package awt;
 import model.MusicSheet;
 import sun.plugin2.os.windows.FLASHWINFO;
 import view.CenterListView;
+import view.CenterOthersView;
 import view.MainView;
 
 import javax.swing.*;
@@ -107,12 +108,12 @@ public class OthersListPanel extends JPanel implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         MainView.mJpanel.remove(MainView.center);
-        MainView.center = new CenterListView();
+        System.out.println("歌曲数：" + musicSheet.getMusicArray().size());
+        MainView.center = new CenterListView(musicSheet.getMusicArray());
         MainView.mJpanel.add(MainView.center,BorderLayout.CENTER);
 
         MainView.mJpanel.updateUI();
         System.out.println("点击了歌单");
-
     }
 
     @Override

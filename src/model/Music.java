@@ -27,6 +27,10 @@ public class Music {
 
     private boolean canPlay = true;
 
+    public Music(){
+
+    }
+
     public Music(String name, String uuid, boolean canPlay) {
         this.name = name;
         this.uuid = uuid;

@@ -62,6 +62,14 @@ public class MusicSheet {
         DataBase.addMusic(Integer.toString(this.id), file);
     }
 
+    public ArrayList<Music> getMusicArray() {
+        return musicArray;
+    }
+
+    public void setMusicArray(ArrayList<Music> musicArray) {
+        this.musicArray = musicArray;
+    }
+
     public String getCreator() {
         return creator;
     }
