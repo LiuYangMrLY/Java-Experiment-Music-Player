@@ -69,8 +69,7 @@ public class MLabel extends JLabel implements MouseListener {
                     MainView.mJpanel.remove(MainView.center);
                     MainView.center = new CenterListView(musicSheet,true);
                     MainView.mJpanel.add(MainView.center,BorderLayout.CENTER);
-
-                    MainView.mJpanel.updateUI();
+                MainView.mJpanel.updateUI();
                     System.out.println("点击了歌单");
                // }
                 break;

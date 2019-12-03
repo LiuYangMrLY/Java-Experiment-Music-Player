@@ -109,7 +109,7 @@ public class CenterListView extends JPanel {
         jPanel.setBorder(new EmptyBorder(50,0,0,0));
         jPanel.setBackground(new Color(245,245,245));
         for (int i = 1;i < musicSheet.getMusicArray().size() + 1;i ++){
-            jPanel.add(new SongPanel(i,musicSheet.getMusicArray().get(i - 1),false));
+            jPanel.add(new SongPanel(i,musicSheet.getMusicArray().get(i - 1),false,musicSheet));
         }
 
         mPanel.add(jPanel);
@@ -238,6 +238,18 @@ public class CenterListView extends JPanel {
             File[] files = fileChooser.getSelectedFiles();
 
             musicSheet.addMusic(files);
+
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+            MainView.mJpanel.remove(MainView.center);
+            MainView.center = new CenterListView(musicSheet,true);
+            MainView.mJpanel.add(MainView.center,BorderLayout.CENTER);
+
+            MainView.mJpanel.updateUI();
+            System.out.println("点击了歌单");
 
             System.out.println("打开文件: " + file.getAbsolutePath() + "\n\n");
         }

@@ -1,6 +1,11 @@
 package awt;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
 import model.Music;
+import model.MusicSheet;
+import model.Player;
+import view.MainView;
+import view.SouthView;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -24,12 +29,14 @@ public class SongPanel extends JPanel implements MouseListener {
     private int WIDTH;
     private Music music = new Music();
     private boolean isMyMusic = false;
+    private MusicSheet musicSheet = new MusicSheet();
 
-    public SongPanel(int num, Music music,boolean isMyMusic){
+    public SongPanel(int num, Music music,boolean isMyMusic,MusicSheet musicSheet){
         super();
         this.num = num;
         this.music = music;
         this.isMyMusic = isMyMusic;
+        this.musicSheet = musicSheet;
         this.setOpaque(true);
         setFocusable(true);
         requestFocus();
@@ -49,7 +56,7 @@ public class SongPanel extends JPanel implements MouseListener {
         lb_player.setPreferredSize(new Dimension(330,30));
         JLabel lb_album = new JLabel(music.getAlbum());
         lb_album.setPreferredSize(new Dimension(330,30));
-        JLabel lb_duration = new JLabel("3:00");
+        JLabel lb_duration = new JLabel(Integer.toString((int) music.getDuration() / 60) + ":" + Integer.toString((int) music.getDuration() % 60));
         lb_duration.setPreferredSize(new Dimension(70,30));
         JLabel lb_num = new JLabel(String.valueOf(num));
         lb_num.setPreferredSize(new Dimension(75,30));
@@ -79,7 +86,11 @@ public class SongPanel extends JPanel implements MouseListener {
         if (e.getButton() == MouseEvent.BUTTON3){
             System.out.println("右键被点击");
         }
-        else if (e.getButton() == MouseEvent.BUTTON1) System.out.println("左键被点击");
+        else if (e.getButton() == MouseEvent.BUTTON1){
+            Player.getInstance().selectSheet(musicSheet.getMusicArray(),num - 1);
+            SouthView.mSlider.setMax(music.getDuration());
+            SouthView.startPlay();
+        }
     }
 
     @Override

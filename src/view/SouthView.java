@@ -2,6 +2,7 @@ package view;
 
 import awt.MProgressBar;
 import awt.MSlider;
+import model.Player;
 import org.omg.CORBA.portable.ValueOutputStream;
 
 import javax.swing.*;
@@ -11,11 +12,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SouthView extends JPanel{
-    JButton btn_play = new JButton();
-    JButton btn_next = new JButton();
-    JButton btn_front = new JButton();
-    MSlider mSlider = new MSlider();
-    boolean isPlaying = false;
+    static JButton btn_play = new JButton();
+    static JButton btn_next = new JButton();
+    static JButton btn_front = new JButton();
+    public static MSlider mSlider = new MSlider();
+    static boolean isPlaying = false;
 
     public SouthView(int duration) {
         super();
@@ -43,6 +44,13 @@ public class SouthView extends JPanel{
         //this.add(new MSlider());
     }
 
+    public static void startPlay(){
+        btn_play.setIcon(new ImageIcon("src/pic/pause_normal.png"));
+        btn_play.setPressedIcon(new ImageIcon("src/pic/pause_pressed.png"));
+        isPlaying = true;
+        mSlider.timer.start();
+    }
+
     private void initComponent(){
         btn_play.setIcon(new ImageIcon("src/pic/play_normal.png"));
         btn_play.setSize(new Dimension(50,500));
@@ -58,12 +66,14 @@ public class SouthView extends JPanel{
                     btn_play.setPressedIcon(new ImageIcon("src/pic/play_pressed.png"));
                     isPlaying = false;
                     mSlider.timer.stop();
+                    Player.getInstance().pause();
                 }
                 else {
                     btn_play.setIcon(new ImageIcon("src/pic/pause_normal.png"));
                     btn_play.setPressedIcon(new ImageIcon("src/pic/pause_pressed.png"));
                     isPlaying = true;
                     mSlider.timer.start();
+                    Player.getInstance().play();
                 }
             }
         });

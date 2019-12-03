@@ -53,7 +53,8 @@ public class Music {
             mediaPlayer.setOnReady(new Runnable() {
                 @Override
                 public void run() {
-                    name = (String) media.getMetadata().get("name");
+                    name = (String) media.getMetadata().get("title");
+                    System.out.println(name);
                     singer = (String) media.getMetadata().get("artist");
                     album = (String) media.getMetadata().get("album");
                     duration = media.getDuration().toSeconds();
