@@ -23,11 +23,13 @@ public class SongPanel extends JPanel implements MouseListener {
     private Color color;
     private int WIDTH;
     private Music music = new Music();
+    private boolean isMyMusic = false;
 
-    public SongPanel(int num, Music music){
+    public SongPanel(int num, Music music,boolean isMyMusic){
         super();
         this.num = num;
         this.music = music;
+        this.isMyMusic = isMyMusic;
         this.setOpaque(true);
         setFocusable(true);
         requestFocus();
@@ -87,7 +89,7 @@ public class SongPanel extends JPanel implements MouseListener {
 
     @Override
     public void mouseReleased(java.awt.event.MouseEvent e) {
-        if (e.isMetaDown()) {
+        if (e.isMetaDown() && isMyMusic) {
             showPopupMenu(e.getComponent(), e.getX(), e.getY());
         }
     }

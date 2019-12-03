@@ -38,6 +38,7 @@ public class MainView extends JFrame{
 
 
 
+        mainView.setResizable(false);
         mainView.setContentPane(mJpanel);
         mainView.setVisible(true);
         mainView.pack();

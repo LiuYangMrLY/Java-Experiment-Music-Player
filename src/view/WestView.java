@@ -51,7 +51,7 @@ public class WestView extends JPanel {
         musicSheets = MusicSheet.getSheets();
         int i = 0;
         for (i = 0; i < musicSheets.size();i++)
-            jPanel.add(new MLabel("list",musicSheets.get(i).getName(),"src/pic/list.png"));
+            jPanel.add(new MLabel(musicSheets.get(i)));
 
         jPanel.setPreferredSize(new Dimension(200,40 * (i + 4)));
 

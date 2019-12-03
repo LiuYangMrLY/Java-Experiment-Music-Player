@@ -109,7 +109,7 @@ public class OthersListPanel extends JPanel implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         MainView.mJpanel.remove(MainView.center);
         System.out.println("歌曲数：" + musicSheet.getMusicArray().size());
-        MainView.center = new CenterListView(musicSheet.getMusicArray());
+        MainView.center = new CenterListView(musicSheet,false);
         MainView.mJpanel.add(MainView.center,BorderLayout.CENTER);
 
         MainView.mJpanel.updateUI();
