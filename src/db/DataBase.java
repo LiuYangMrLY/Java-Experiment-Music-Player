@@ -1,6 +1,7 @@
 package db;
 
 import model.Music;
+import model.MusicSheet;
 import org.jaudiotagger.audio.exceptions.CannotReadException;
 import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
 import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
@@ -157,6 +158,29 @@ public class DataBase {
     }
 
     /**
+     * | id | name | date | owner | picture |
+     * @param sheet
+     */
+    public static void createMusicSheet(MusicSheet sheet) {
+        String INSERT_SHEET_SQL = "INSERT INTO sheet VALUES (?, ?, ?, ?, ?)";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_SHEET_SQL);
+            preparedStatement.setString(1, Integer.toString(sheet.getId()));
+            preparedStatement.setString(2, sheet.getName());
+            preparedStatement.setString(3, sheet.getDateCreated());
+            preparedStatement.setString(4, sheet.getCreator());
+            preparedStatement.setString(5, sheet.getPicture());
+
+            preparedStatement.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    /**
      * 添加歌曲
      * @param sheetID 所属歌单的id
      * @param file 歌曲文件
@@ -238,7 +262,10 @@ public class DataBase {
     }
     public static void main(String[] args) {
 //        System.out.println(Arrays.toString(DataBase.getAllSheets().toArray()));
-        File file = new File("test.txt");
-        DataBase.addMusic("1", file);
+//        File file = new File("test.txt");
+//        DataBase.addMusic("1", file);
+        //String name, String creator, String creatorId, String picture
+            createMusicSheet(new MusicSheet("1", "1", "1", "1"));
+
     }
 }

@@ -1,9 +1,11 @@
 package model;
 
 import db.DataBase;
+import util.MD5Utils;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class MusicSheet {
@@ -23,8 +25,28 @@ public class MusicSheet {
 //        this.date = date;
 //        this.owner = owner;
 //        this.picture = picture;
+    public void test() {
+        System.out.println(this.musicArray.get(0).getName());
+    }
 //    }
     public MusicSheet() {}
+
+    /**
+     * 创建歌单时使用
+     * @param name
+     * @param creator
+     * @param creatorId
+     * @param picture
+     */
+    public MusicSheet(String name, String creator, String creatorId, String picture) {
+        this.name = name;
+        this.creator = creator;
+        this.creatorId = creatorId;
+        this.picture = picture;
+
+        this.dateCreated = (new Date()).toString();
+        this.uuid = MD5Utils.MD5Encode(Integer.toString(this.id), "utf-8");
+    }
 
     public MusicSheet(String id, String name, String date, String creator, String picture) {
         this.id = Integer.parseInt(id);
@@ -56,6 +78,13 @@ public class MusicSheet {
      */
     public ArrayList<Music> getMusicInThisSheet() {
         return DataBase.getMusicOfTheSheet(Integer.toString(this.id));
+    }
+
+    /**
+     * 保存当前歌单到数据库
+     */
+    public void saveMusicSheet() {
+
     }
 
     public void addMusic(File file) {
@@ -120,5 +149,9 @@ public class MusicSheet {
 
     public void addToArray(Music music) {
         this.musicArray.add(music);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new Date().toString());
     }
 }
