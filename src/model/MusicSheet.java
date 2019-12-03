@@ -108,7 +108,9 @@ public class MusicSheet {
      */
     public void addMusic(File file) {
         DataBase.addMusic(Integer.toString(this.id), file);
-
+        
+        Music music = new Music(Integer.toString(this.id), file.getAbsolutePath());
+        this.addToArray(music);
     }
 
     /**
@@ -118,6 +120,9 @@ public class MusicSheet {
     public void addMusic(File[] files) {
         for (File file: files) {
             DataBase.addMusic(Integer.toString(this.id), file);
+
+            Music music = new Music(Integer.toString(this.id), file.getAbsolutePath());
+            this.addToArray(music);
         }
     }
 
