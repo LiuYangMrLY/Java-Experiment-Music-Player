@@ -20,12 +20,17 @@ public class MSlider extends JSlider implements Runnable{
         this.MAX_PROGRESS = this.getMaximum();
         this.setBackground(Color.white);
         //this.setAutoscrolls(true);
-        animate();
+
     }
-    public Timer animate(){
+
+    public void setMax(double duration){
+        animate(duration);
+    }
+
+    public Timer animate(double duration){
         MSlider mSlider = this;
         currentProgress = this.getValue();
-        timer = new Timer(100, new ActionListener() {
+        timer = new Timer((int)duration * 2, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 currentProgress ++;
@@ -39,20 +44,24 @@ public class MSlider extends JSlider implements Runnable{
         return timer;
     }
 
+    public void startPlaying(){
+        timer.start();
+    }
+
     @Override
     public void run() {
-        Timer timer;
-        timer = animate();
-        synchronized (this) {
-            timer.start();
-        }
-        while (timer.isRunning()) {
-            if (Thread.currentThread().isInterrupted()) {
-                //处理中断逻辑
-                timer.stop();
-                break;
-                //Thread.currentThread().interrupted();
-            }
-        }
+//        Timer timer;
+//        //timer = animate();
+//        synchronized (this) {
+//            timer.start();
+//        }
+//        while (timer.isRunning()) {
+//            if (Thread.currentThread().isInterrupted()) {
+//                //处理中断逻辑
+//                timer.stop();
+//                break;
+//                //Thread.currentThread().interrupted();
+//            }
+//        }
     }
 }
