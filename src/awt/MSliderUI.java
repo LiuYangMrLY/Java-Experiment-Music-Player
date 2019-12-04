@@ -18,9 +18,9 @@ public class MSliderUI extends BasicSliderUI {
         g2d.setStroke(stroke);
         g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,1f));
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        GradientPaint gp=new GradientPaint(0,0,BACKGROUND02,0,thumbRect.height,BACKGROUND01);
+        GradientPaint gp=new GradientPaint(0,0,BACKGROUND02,0,thumbRect.height,BACKGROUND02);
         g2d.setPaint(gp);
-        g2d.fillRoundRect(thumbRect.x, thumbRect.y, thumbRect.width + 4, thumbRect.height - 4, 1000, 1000);
+        g2d.fillRoundRect(thumbRect.x, thumbRect.y, thumbRect.width + 4, thumbRect.height - 4,100,100);
         BasicStroke stroke1=new BasicStroke(5,BasicStroke.CAP_ROUND,BasicStroke.JOIN_ROUND);
         g2d.setStroke(stroke1);
         g2d.drawLine(8, thumbRect.height/2,thumbRect.x+8 , thumbRect.height/2);
