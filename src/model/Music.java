@@ -39,13 +39,13 @@ public class Music {
      * @param uuid     File MD5
      * @param path     文件路径
      */
-    public Music(String name, int sheetIdm, String uuid, String path) {
+    public Music(String name, int sheetIdm, String uuid, String path, MusicSheet sheet) {
         this.name = name;
         this.sheetId = sheetIdm;
         this.uuid = uuid;
         this.path = path;
 
-        this.sheet = MusicSheet.getMusicSheet(this.sheetId);
+        this.sheet = sheet;
 
         this.loadMusic();
     }
@@ -88,7 +88,8 @@ public class Music {
             Music music = new Music(file);
 
             Date endDate = new Date();
-            while (music.isLoading() || (endDate.getTime() - startDate.getTime()) > 500) {
+            while (music.isLoading() || (endDate.getTime() - startDate.getTime()) < 1000) {
+                System.out.println("0000");
                 endDate = new Date();
             }
 

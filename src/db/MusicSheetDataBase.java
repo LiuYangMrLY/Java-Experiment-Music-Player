@@ -105,7 +105,7 @@ public class MusicSheetDataBase {
     public static boolean insertMusicSheet(MusicSheet sheet) {
         boolean flag = false;
 
-        String INSERT_MUSIC_SHEET_SQL = "INSERT INTO sheet (name, dateCreate, creator, creatorId, picture, uuid) VALUES (?, ?, ?, ?, ?, ?)";
+        String INSERT_MUSIC_SHEET_SQL = "INSERT INTO sheet (name, dateCreated, creator, creatorId, picture, uuid) VALUES (?, ?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement preparedStatement = DataBase.connection.prepareStatement(INSERT_MUSIC_SHEET_SQL);
@@ -142,12 +142,12 @@ public class MusicSheetDataBase {
     public static void musicSheetTablePreparation() {
         String CREATE_MUSIC_SHEET_TABLE_SQL =
                 "CREATE TABLE IF NOT EXISTS sheet(" +
-                        "id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT," +
+                        "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                         "name CHAR(255)," +
                         "dateCreated TIMESTAMP," +
                         "creator CHAR(255)," +
                         "creatorId CHAR(255)," +
-                        "picture CHAR(255)" +
+                        "picture CHAR(255)," +
                         "uuid CHAR(255))";
 
         try {

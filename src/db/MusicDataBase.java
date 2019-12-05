@@ -17,7 +17,7 @@ public class MusicDataBase {
     public static ArrayList<Music> getMusicsFromMusicSheet(MusicSheet sheet) {
         ArrayList<Music> musics = new ArrayList<>();
 
-        String SELECT_MUSIC_FROM_MUSIC_SHEET_SQL = "SELECT FROM music WHERE sheetId=?";
+        String SELECT_MUSIC_FROM_MUSIC_SHEET_SQL = "SELECT * FROM music WHERE sheetId=?";
 
         try {
             PreparedStatement preparedStatement = DataBase.connection.prepareStatement(SELECT_MUSIC_FROM_MUSIC_SHEET_SQL);
@@ -30,7 +30,8 @@ public class MusicDataBase {
                         resultSet.getString("name"),
                         resultSet.getInt("sheetId"),
                         resultSet.getString("uuid"),
-                        resultSet.getString("path")
+                        resultSet.getString("path"),
+                        sheet
                 ));
             }
 
