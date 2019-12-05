@@ -34,85 +34,37 @@ public class Player {
     private double volume = 0.7;  // default 0.7  |  0.0 (静音) ~ 1.0 (最大音量)
     private double duration = Duration.seconds(0).toSeconds();
 
-    private enum Mode {ORDER, RANDOM, SINGLE};
+    private enum Mode {ORDER, RANDOM, SINGLE}
     private Mode mode = Mode.ORDER;
 
-    private ArrayList<Music> musicList = null;
+    private MusicSheet musicSheet = null;
     private int index = 0;
 
-    /**
-     * 选取歌单中的某首歌进行播放
-     * @param sheet 歌单
-     * @param index
-     */
-    public void selectSheet(ArrayList<Music> sheet, int index) {
-        this.musicList = sheet;
 
-        this.selectSong(index);
+    /**
+     * 选择歌单 歌曲 进行播放
+     * @param sheet 歌单
+     * @param index 歌曲在歌单中的索引
+     */
+    public void selectMusicSheetAndMusic(MusicSheet sheet, int index) {
+        this.musicSheet = sheet;
+
+        this.selectMusic(index);
     }
 
-
-//    /**
-//     * 选择本地 music 并自动播放
-//     * @param path 本地歌曲的路径
-//     * @return true   成功
-//     *         false  失败
-//     */
-//    public boolean selectSong(String path, int index) {
-//        this.index = index;
-//
-//        // 清除之前被选中的音乐
-//        this.media = null;
-//        if (this.mediaPlayer != null) {
-//            this.mediaPlayer.dispose();
-//            this.mediaPlayer = null;
-//        }
-//
-//        try {
-//            URL url = new File(path).toURI().toURL();
-//            this.media = new Media(url.toExternalForm());
-//            this.mediaPlayer = new MediaPlayer(media);
-//
-//            // 保持之前的音量
-//            this.mediaPlayer.setVolume(this.volume);
-//            // music 从头开始
-//            this.mediaPlayer.setStartTime(Duration.seconds(0));
-//            // music 自动播放
-//            this.mediaPlayer.setAutoPlay(true);
-//
-//            this.mediaPlayer.setOnReady(new Runnable() {
-//                @Override
-//                public void run() {
-//                    duration = media.getDuration().toSeconds();
-//                }
-//            });
-//
-//
-//            this.mediaPlayer.setOnEndOfMedia(new Runnable() {
-//                @Override
-//                public void run() {
-//                    Player.getInstance().next();
-//                }
-//            });
-//
-//        } catch (MalformedURLException e) {
-//            e.printStackTrace();
-//            return false;
-//        }
-//
-//        return true;
-//    }
-
     /**
-     * 选择本地 music 并自动播放
-     * @param index 播放歌曲在歌单中的索引
-     * @return true   成功
-     *         false  失败
+     * 选择歌曲进行播放
+     * @param index 歌曲在歌单中的索引
      */
-    public boolean selectSong(int index) {
-        this.index = index;
+    public void selectMusic(int index) {
+        if (index < 0) {
+            this.index = 0;
+        }
 
-        // 清除之前被选中的音乐
+        if (index > this.musicSheet.getMusicArray().size() - 1) {
+            this.index = this.musicSheet.getMusicArray().size() - 1;
+        }
+
         this.media = null;
         if (this.mediaPlayer != null) {
             this.mediaPlayer.dispose();
@@ -120,9 +72,10 @@ public class Player {
         }
 
         try {
-            URL url = new File(this.musicList.get(index).getPath()).toURI().toURL();
+            URL url = new File(this.musicSheet.getMusicArray().get(index).getPath()).toURI().toURL();
+
             this.media = new Media(url.toExternalForm());
-            this.mediaPlayer = new MediaPlayer(media);
+            this.mediaPlayer = new MediaPlayer(this.media);
 
             // 保持之前的音量
             this.mediaPlayer.setVolume(this.volume);
@@ -138,20 +91,23 @@ public class Player {
                 }
             });
 
-
             this.mediaPlayer.setOnEndOfMedia(new Runnable() {
                 @Override
                 public void run() {
                     Player.getInstance().next();
                 }
             });
-
         } catch (MalformedURLException e) {
             e.printStackTrace();
-            return false;
         }
+    }
 
-        return true;
+    /**
+     * 获取当前选择歌单中的所有歌曲
+     * @return 歌曲列表
+     */
+    public ArrayList<Music> getCurrentMusicList() {
+        return this.musicSheet.getMusicArray();
     }
 
     /**
@@ -320,30 +276,30 @@ public class Player {
      * 切换到下一首歌曲
      */
     public void next() {
-        if (this.musicList == null) {
+        if (this.musicSheet == null) {
             return;
         }
 
         // 顺序播放
         if (this.mode == Mode.ORDER) {
-            int toPlayIndex = (this.index + 1) % this.musicList.size();
+            int toPlayIndex = (this.index + 1) % this.musicSheet.getMusicArray().size();
 
-            this.selectSong(toPlayIndex);
+            this.selectMusic(toPlayIndex);
             return;
         }
 
         // 随机播放
         if (this.mode == Mode.RANDOM) {
             Random random = new Random();
-            int toPlayIndex = random.nextInt(this.musicList.size());
+            int toPlayIndex = random.nextInt(this.musicSheet.getMusicArray().size());
 
-            this.selectSong(toPlayIndex);
+            this.selectMusic(toPlayIndex);
             return;
         }
 
         // 单曲循环
         if (this.mode == Mode.SINGLE) {
-            this.selectSong(this.index);
+            this.selectMusic(this.index);
             return;
         }
     }

@@ -108,6 +108,7 @@ public class MusicSheet {
      */
     public void addMusicIntoMusicSheet(Music music) {
         MusicDataBase.insertMusicIntoMusicSheet(music, this);
+        this.musicArray.add(music);
     }
 
     /**
@@ -118,6 +119,7 @@ public class MusicSheet {
         if (musics != null) {
             for (Music music: musics) {
                 MusicDataBase.insertMusicIntoMusicSheet(music, this);
+                this.musicArray.add(music);
             }
         }
     }
@@ -130,6 +132,7 @@ public class MusicSheet {
         if (musics != null) {
             for (Music music: musics) {
                 MusicDataBase.insertMusicIntoMusicSheet(music, this);
+                this.musicArray.add(music);
             }
         }
     }

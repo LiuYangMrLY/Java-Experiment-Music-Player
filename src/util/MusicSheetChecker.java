@@ -44,7 +44,7 @@ public class MusicSheetChecker {
         ArrayList<MusicSheet> array = new ArrayList<>();
 
         for (JsonElement element: sheetJsonArray) {
-            MusicSheet sheet = new MusicSheet();
+            MusicSheet sheet = new MusicSheet("网络歌单", "网络", "Internet", "");
             try {
                 sheet.setCreator(element.getAsJsonObject().get("creator").getAsString());
                 sheet.setCreatorId(element.getAsJsonObject().get("creatorId").getAsString());
@@ -59,7 +59,7 @@ public class MusicSheetChecker {
 
             JsonObject musicItem = element.getAsJsonObject().get("musicItems").getAsJsonObject();
             for (String key: musicItem.keySet()) {
-                sheet.addToArray(new Music(musicItem.get(key).getAsString(), key, false));
+                sheet.getMusicArray().add(new Music(musicItem.get(key).getAsString(), key));
             }
 
             array.add(sheet);

@@ -62,6 +62,16 @@ public class Music {
     }
 
     /**
+     * 仅用于显示
+     * @param name 歌曲名
+     * @param uuid MD5
+     */
+    public Music(String name, String uuid) {
+        this.name = name;
+        this.uuid = uuid;
+    }
+
+    /**
      * 新建歌曲
      * @param files 歌曲文件
      * @return 可以加载的歌曲列表
