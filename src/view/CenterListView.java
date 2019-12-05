@@ -240,7 +240,7 @@ public class CenterListView extends JPanel {
             musicSheet.addMusic(files);
 
             try {
-                Thread.sleep(100);
+                Thread.sleep(100 * files.length);
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }

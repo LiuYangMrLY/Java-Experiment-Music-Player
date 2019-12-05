@@ -88,8 +88,7 @@ public class SongPanel extends JPanel implements MouseListener {
         }
         else if (e.getButton() == MouseEvent.BUTTON1){
             Player.getInstance().selectSheet(musicSheet.getMusicArray(),num - 1);
-            SouthView.mSlider.setMax(music.getDuration());
-            SouthView.startPlay();
+            SouthView.startPlay();//进度条开始播放
         }
     }
 
