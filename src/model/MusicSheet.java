@@ -1,43 +1,56 @@
 package model;
 
-import db.DataBase;
+import db.MusicDataBase;
+import db.MusicSheetDataBase;
 import util.MD5Utils;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 
 public class MusicSheet {
+    // 主属性 main attributes
+    private int id = 0;
+    private String name;
+    private String dateCreated;
     private String creator;
     private String creatorId;
-    private String dateCreated;
-    private int id;
-    private String name;
     private String picture;
     private String uuid;
 
+    // 其他属性  other attributes
     private ArrayList<Music> musicArray = new ArrayList<>();
 
-//    public MusicSheet(String id, String name, Date date, String owner, String picture) {
-//        this.id = Integer.parseInt(id);
-//        this.name = name;
-//        this.date = date;
-//        this.owner = owner;
-//        this.picture = picture;
+    @Deprecated
+    MusicSheet() {}
 
-    public void test() {
-        System.out.println(this.musicArray.get(0).getName());
+    /**
+     * 数据库 new MusicSheet
+     * @param id          ID
+     * @param name        歌单名
+     * @param dateCreated 创建时间
+     * @param creator     创建者
+     * @param creatorId   创建者 ID
+     * @param picture     歌单封面图片路径
+     * @param uuid        name MD5
+     */
+    public MusicSheet(int id, String name, String dateCreated, String creator, String creatorId, String picture, String uuid) {
+        this.id = id;
+        this.name = name;
+        this.dateCreated = dateCreated;
+        this.creator = creator;
+        this.creatorId = creatorId;
+        this.picture = picture;
+        this.uuid = uuid;
+
+        this.musicArray = MusicDataBase.getMusicsFromMusicSheet(this);
     }
-//    }
-    public MusicSheet() {}
 
     /**
      * 创建歌单时使用
-     * @param name
-     * @param creator
-     * @param creatorId
-     * @param picture
+     * @param name      歌单名
+     * @param creator   创建者
+     * @param creatorId 创建者 ID
+     * @param picture   歌单封面图片路径
      */
     public MusicSheet(String name, String creator, String creatorId, String picture) {
         if (name == null) {
@@ -45,156 +58,153 @@ public class MusicSheet {
         }
 
         this.name = name;
+        this.dateCreated = (new Date()).toString();
         this.creator = creator;
         this.creatorId = creatorId;
         this.picture = picture;
-
-        this.dateCreated = (new Date()).toString();
         this.uuid = MD5Utils.MD5Encode(Integer.toString(this.id), "utf-8");
     }
 
-    public MusicSheet(String id, String name, String date, String creator, String picture) {
-        this.id = Integer.parseInt(id);
-        this.name = name;
-        this.dateCreated = date;
-        this.creator = creator;
-        this.picture = picture;
+    /**
+     * 获取所有歌单 get all of MusicSheet
+     * @return 歌单列表 array of MusicSheet
+     */
+    public static ArrayList<MusicSheet> getAllMusicSheets() {
+        return MusicSheetDataBase.getAllMusicSheets();
     }
 
-    /**
-     * 获取所有的歌单
-     * @return [sheet, ...]
-     */
-    public static ArrayList<MusicSheet> getSheets() {
-        ArrayList<MusicSheet> result = new ArrayList<>();
-
-        ArrayList<HashMap<String, String>> array = DataBase.getAllSheets();
-        for (HashMap<String, String> map: array) {
-            result.add(new MusicSheet(map.get("id"), map.get("name"),
-                    map.get("date"), map.get("owner"), map.get("picture")));
-        }
-
-        return result;
+    public static MusicSheet getMusicSheet(int id) {
+        return MusicSheetDataBase.getMusicSheet(id);
     }
 
     /**
      * 获取当前歌单的所有歌曲
-     * @return [music, ...]
+     * @return 歌曲列表 array of music
      */
-    public ArrayList<Music> getMusicInThisSheet() {
-        return DataBase.getMusicOfTheSheet(Integer.toString(this.id));
+    public ArrayList<Music> getMusicsFromMusicSheet() {
+        return MusicDataBase.getMusicsFromMusicSheet(this);
     }
 
     /**
      * 保存当前歌单到数据库
      */
-    public void saveMusicSheet() {
-        DataBase.createMusicSheet(this);
+    public void saveMusicSheetInDatabase() {
+        if (this.id == 0) {
+            MusicSheetDataBase.insertMusicSheet(this);
+        }
     }
 
     /**
      * 删除当前歌单中指定索引的歌曲
      * @param index 当前歌单中歌曲的索引
      */
-    public void deleteMusic(int index) {
-        Music deletedMusic = this.musicArray.remove(index);
-        DataBase.deleteMusic(Integer.toString(this.id), deletedMusic);
-
+    public void deleteMusicFromMusicSheet(int index) {
+        if (0 <= index && index < this.musicArray.size()) {
+            MusicDataBase.deleteMusicFromMusicSheet(this.musicArray.get(index));
+            this.musicArray.remove(index);
+        }
     }
 
     /**
      * 向当前歌单中添加歌曲
-     * @param file
+     * @param music 歌曲
      */
-    public void addMusic(File file) {
-        DataBase.addMusic(Integer.toString(this.id), file);
-        
-        Music music = new Music(Integer.toString(this.id), file.getAbsolutePath());
-        this.addToArray(music);
+    public void addMusicIntoMusicSheet(Music music) {
+        MusicDataBase.insertMusicIntoMusicSheet(music, this);
+        this.musicArray.add(music);
     }
 
     /**
-     *
-     * @param files
+     * 向当前歌单中添加歌曲
+     * @param musics 歌曲数组
      */
-    public void addMusic(File[] files) {
-        for (File file: files) {
-            DataBase.addMusic(Integer.toString(this.id), file);
-
-            Music music = new Music(Integer.toString(this.id), file.getAbsolutePath());
-            this.addToArray(music);
+    public void addMusicIntoMusicSheet(Music[] musics) {
+        if (musics != null) {
+            for (Music music: musics) {
+                MusicDataBase.insertMusicIntoMusicSheet(music, this);
+                this.musicArray.add(music);
+            }
         }
     }
 
-    public ArrayList<Music> getMusicArray() {
-        return musicArray;
-    }
-
-    public void setMusicArray(ArrayList<Music> musicArray) {
-        this.musicArray = musicArray;
-    }
-
-    public String getCreator() {
-        return creator;
-    }
-
-    public void setCreator(String creator) {
-        this.creator = creator;
-    }
-
-    public String getCreatorId() {
-        return creatorId;
-    }
-
-    public void setCreatorId(String creatorId) {
-        this.creatorId = creatorId;
-    }
-
-    public String getDateCreated() {
-        return dateCreated;
-    }
-
-    public void setDateCreated(String dateCreated) {
-        this.dateCreated = dateCreated;
+    /**
+     * 向当前歌单中添加歌曲
+     * @param musics 列表
+     */
+    public void addMusicIntoMusicSheet(ArrayList<Music> musics) {
+        if (musics != null) {
+            for (Music music: musics) {
+                MusicDataBase.insertMusicIntoMusicSheet(music, this);
+                this.musicArray.add(music);
+            }
+        }
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getDateCreated() {
+        return dateCreated;
+    }
+
+    public String getCreator() {
+        return creator;
+    }
+
+    public String getCreatorId() {
+        return creatorId;
     }
 
     public String getPicture() {
         return picture;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
-
     public String getUuid() {
         return uuid;
+    }
+
+    public ArrayList<Music> getMusicArray() {
+        return musicArray;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDateCreated(String dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
+
+    public void setCreatorId(String creatorId) {
+        this.creatorId = creatorId;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     public void setUuid(String uuid) {
         this.uuid = uuid;
     }
 
-    public void addToArray(Music music) {
-        this.musicArray.add(music);
+    public void setMusicArray(ArrayList<Music> musicArray) {
+        this.musicArray = musicArray;
     }
 
     public static void main(String[] args) {
-        System.out.println(new Date().toString());
+
     }
 }
