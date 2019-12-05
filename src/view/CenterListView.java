@@ -30,7 +30,7 @@ public class CenterListView extends JPanel {
     private JButton btn_delete = new JButton("删除歌单");
 
     private boolean isMyList = false;
-    private MusicSheet musicSheet = new MusicSheet();
+    private MusicSheet musicSheet;
 
 
     public CenterListView(MusicSheet musicSheet,boolean isMyList){
@@ -237,7 +237,7 @@ public class CenterListView extends JPanel {
             // 如果允许选择多个文件, 则通过下面方法获取选择的所有文件
             File[] files = fileChooser.getSelectedFiles();
 
-            musicSheet.addMusic(files);
+            musicSheet.addMusicIntoMusicSheet(Music.newMusics(files));
 
             try {
                 Thread.sleep(100 * files.length);

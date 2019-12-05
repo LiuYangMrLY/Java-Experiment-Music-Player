@@ -20,7 +20,7 @@ public class OthersListPanel extends JPanel implements MouseListener {
     private JLabel lb_listName = new JLabel();
     private JLabel lb_userName = new JLabel();
 
-    private MusicSheet musicSheet = new MusicSheet();
+    private MusicSheet musicSheet;
 
     public OthersListPanel(String picPath, String listName, String userName) {
         super();

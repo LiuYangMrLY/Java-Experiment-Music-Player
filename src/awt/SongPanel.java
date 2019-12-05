@@ -27,9 +27,9 @@ public class SongPanel extends JPanel implements MouseListener {
     private static int num;
     private Color color;
     private int WIDTH;
-    private Music music = new Music();
+    private Music music;
     private boolean isMyMusic = false;
-    private MusicSheet musicSheet = new MusicSheet();
+    private MusicSheet musicSheet;
 
     public SongPanel(int num, Music music,boolean isMyMusic,MusicSheet musicSheet){
         super();
@@ -87,7 +87,7 @@ public class SongPanel extends JPanel implements MouseListener {
             System.out.println("右键被点击");
         }
         else if (e.getButton() == MouseEvent.BUTTON1){
-            Player.getInstance().selectSheet(musicSheet.getMusicArray(),num - 1);
+            Player.getInstance().selectMusicSheetAndMusic(musicSheet,num - 1);
             SouthView.startPlay();//进度条开始播放
         }
     }

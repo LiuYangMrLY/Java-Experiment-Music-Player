@@ -22,7 +22,7 @@ public class MLabel extends JLabel implements MouseListener {
     private String name;
     private boolean isSelected = false;
     private Context context;
-    private MusicSheet musicSheet = new MusicSheet();
+    private MusicSheet musicSheet;
 
     public MLabel(String name,String text,String path){
         super();
@@ -93,7 +93,7 @@ public class MLabel extends JLabel implements MouseListener {
                 );
                 System.out.println("输入的内容: " + inputContent);
                 MusicSheet musicSheet = new MusicSheet(inputContent,"粉色龙类物种","1114","src/pic/list_pic.png");
-                musicSheet.saveMusicSheet();
+                musicSheet.saveMusicSheetInDatabase();
                 MainView.mJpanel.remove(MainView.west);
                 MainView.west = new WestView();
                 MainView.mJpanel.add(MainView.west,BorderLayout.WEST);
