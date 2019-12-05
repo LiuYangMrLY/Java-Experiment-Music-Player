@@ -57,7 +57,7 @@ public class WestView extends JPanel {
 
         //保证宽高大于JScrollPane的宽高
         MScrollPane scrollPane = new MScrollPane(jPanel);
-        scrollPane.setPreferredSize(new Dimension(WIDTH - 15,300));
+        scrollPane.setPreferredSize(new Dimension(WIDTH - 15,800));
 
 
         this.add(jPanel1);

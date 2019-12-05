@@ -25,7 +25,7 @@ public class SouthView extends JPanel{
     private JLabel btn_playStyle = new JLabel();
     private JLabel btn_vol = new JLabel(new ImageIcon("src/pic/vol.png"));
     private static int playStyle = 0;//0为列表循环，1为单曲循环，2为随机播放
-    private static boolean haveMusic = false;
+    public static boolean haveMusic = false;
 
     public SouthView(int duration) {
         super();
@@ -51,6 +51,7 @@ public class SouthView extends JPanel{
 
         this.add(btn_playStyle);
         this.add(btn_vol);
+        mSlider.setEnabled(false);
         //setLayout(new FlowLayout());
         //this.add(new MProgressBar(duration));
         //this.add(new MSlider());
@@ -66,6 +67,7 @@ public class SouthView extends JPanel{
             btn_next.setEnabled(true);
             btn_front.setEnabled(true);
             btn_play.setEnabled(true);
+            mSlider.setEnabled(true);
         }
         else {
             btn_play.setEnabled(false);
@@ -79,11 +81,12 @@ public class SouthView extends JPanel{
      */
     public static void startPlay(){
 
-        changeStatus(true);//将状态改为有音乐
+
         btn_play.setIcon(new ImageIcon("src/pic/pause_normal.png"));
         btn_play.setPressedIcon(new ImageIcon("src/pic/pause_pressed.png"));
         isPlaying = true;
         mSlider.startPlaying();
+        changeStatus(true);//将状态改为有音乐
     }
 
     /**
@@ -227,17 +230,16 @@ public class SouthView extends JPanel{
         popupMenu.setBorderPainted(false);
 
         // 创建 一级菜单
-        JMenuItem copyMenuItem = new JMenuItem("复制");
+        JMenuItem volMenuItem = new JMenuItem("音量");
         MVolSlider jSlider = new MVolSlider();
-        copyMenuItem.add(jSlider);
+        volMenuItem.add(jSlider);
 
-        popupMenu.add(copyMenuItem);
+        popupMenu.add(volMenuItem);
 
         // 添加菜单项的点击监听器
-        copyMenuItem.addActionListener(new ActionListener() {
+        volMenuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("复制 被点击");
             }
         });
         // 在指定位置显示弹出菜单

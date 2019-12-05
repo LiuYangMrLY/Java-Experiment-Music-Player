@@ -1,5 +1,7 @@
 package awt;
 
+import javafx.scene.image.Image;
+
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicSliderUI;
 import java.awt.*;
@@ -20,7 +22,10 @@ public class MSliderUI extends BasicSliderUI {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         GradientPaint gp=new GradientPaint(0,0,BACKGROUND02,0,thumbRect.height,BACKGROUND02);
         g2d.setPaint(gp);
-        g2d.fillRoundRect(thumbRect.x, thumbRect.y, thumbRect.width + 4, thumbRect.height - 4,100,100);
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.fillOval(thumbRect.x, thumbRect.y, thumbRect.width,
+                thumbRect.height);//修改为圆形
+        //g2d.fillRoundRect(thumbRect.x, thumbRect.y, thumbRect.width + 4, thumbRect.height - 4,100,100);
         BasicStroke stroke1=new BasicStroke(5,BasicStroke.CAP_ROUND,BasicStroke.JOIN_ROUND);
         g2d.setStroke(stroke1);
         g2d.drawLine(8, thumbRect.height/2,thumbRect.x+8 , thumbRect.height/2);
