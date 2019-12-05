@@ -40,7 +40,6 @@ public class Player {
     private MusicSheet musicSheet = null;
     private int index = 0;
 
-
     /**
      * 选择歌单 歌曲 进行播放
      * @param sheet 歌单
@@ -108,6 +107,14 @@ public class Player {
      */
     public ArrayList<Music> getCurrentMusicList() {
         return this.musicSheet.getMusicArray();
+    }
+
+    /**
+     * 获取当前的歌单
+     * @return 歌单 MusicSheet
+     */
+    public MusicSheet getCurrentMusicSheet() {
+        return this.musicSheet;
     }
 
     /**
@@ -251,6 +258,14 @@ public class Player {
     }
 
     /**
+     * 获取当前的播放模式
+     * @return 播放模式 Mode
+     */
+    public Mode getMode() {
+        return this.mode;
+    }
+
+    /**
      * 设置播放模式为 顺序播放
      */
     public void setModeOrder() {
@@ -270,7 +285,6 @@ public class Player {
     public void setModeSingle() {
         this.mode = Mode.SINGLE;
     }
-
 
     /**
      * 切换到下一首歌曲

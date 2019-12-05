@@ -20,6 +20,9 @@ public class MusicSheet {
     // 其他属性  other attributes
     private ArrayList<Music> musicArray = new ArrayList<>();
 
+    @Deprecated
+    MusicSheet() {}
+
     /**
      * 数据库 new MusicSheet
      * @param id          ID
