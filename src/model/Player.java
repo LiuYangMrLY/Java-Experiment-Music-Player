@@ -20,6 +20,10 @@ public class Player {
 
     private Player() {}
 
+    /**
+     * 获取 Player
+     * @return 单例 Player
+     */
     public static Player getInstance() {
         return Player.player;
     }

@@ -12,14 +12,15 @@ public class Main {
         com.sun.javafx.application.PlatformImpl.startup(()->{});
         Player player = Player.getInstance();
 
-        Music music1 = new Music("1", "华语群星-爸爸去哪儿.mp3");
-        Music music2 = new Music("1", "陈学冬-不再见.mp3");
-        Music music3 = new Music("1", "霍建华,赵丽颖-不可说.mp3");
+        Music music = new Music("1", "/Users/leo/Music/QQ音乐/邓超-无敌.mp3");
+//        Music music1 = new Music("1", "华语群星-爸爸去哪儿.mp3");
+//        Music music2 = new Music("1", "陈学冬-不再见.mp3");
+//        Music music3 = new Music("1", "霍建华,赵丽颖-不可说.mp3");
 
         ArrayList<Music> array = new ArrayList<>();
-        array.add(music1);
-        array.add(music2);
-        array.add(music3);
+//        array.add(music1);
+//        array.add(music2);
+//        array.add(music3);
 
         player.setModeRandom();
         player.selectSheet(array, 0);
