@@ -79,6 +79,10 @@ public class Downloader {
 
             String key = "filename=";
             String contentDisposition = response.header("Content-Disposition");
+            // 重新编码
+            if (contentDisposition == null) {
+                return;
+            }
             fileName = URLDecoder.decode(contentDisposition.substring(contentDisposition.lastIndexOf(key) + key.length()), "UTF-8");
         } catch (IOException e) {
             e.printStackTrace();

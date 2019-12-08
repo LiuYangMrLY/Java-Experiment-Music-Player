@@ -5,6 +5,7 @@ import db.MusicSheetDataBase;
 import util.MD5Utils;
 import util.Uploader;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -65,6 +66,29 @@ public class MusicSheet {
         this.picture = picture;
         this.uuid = MD5Utils.MD5Encode(Integer.toString(this.id), "utf-8");
     }
+
+    /**
+     * 获取下载页歌单
+     * @return 已下载歌曲的歌单 MusicSheet
+     */
+    public static MusicSheet getDownloadedMusicSheet() {
+        MusicSheet sheet = new MusicSheet();
+
+        String MUSIC_FOLDER = "MusicDownload";
+
+        File folder = new File(MUSIC_FOLDER);
+        if (!folder.exists()) {
+            folder.mkdirs();
+        }
+
+        for (File file: folder.listFiles()) {
+            sheet.getMusicArray().add(new Music(file));
+        }
+
+        return sheet;
+    }
+
+
 
     /**
      * 获取所有歌单 get all of MusicSheet
@@ -148,6 +172,15 @@ public class MusicSheet {
         Uploader.uploadMusicSheet(this);
     }
 
+    /**
+     * 更新歌单封面
+     * @param file 歌单封面文件
+     */
+    public void updateMusicSheetPicture(File file) {
+        this.picture = file.getAbsolutePath();
+        MusicSheetDataBase.updateMusicSheetPicture(this, this.picture);
+    }
+
     public int getId() {
         return id;
     }
@@ -212,7 +245,11 @@ public class MusicSheet {
         this.musicArray = musicArray;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        com.sun.javafx.application.PlatformImpl.startup(()->{});
 
+        ArrayList<Music> arrayList = getDownloadedMusicSheet().getMusicArray();
+        Thread.sleep(500);
+        System.out.println(arrayList.get(0).getName());
     }
 }

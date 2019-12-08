@@ -53,6 +53,9 @@ public class Checker {
                 sheet.setName(element.getAsJsonObject().get("name").getAsString());
                 sheet.setPicture(element.getAsJsonObject().get("picture").getAsString());
                 sheet.setUuid(element.getAsJsonObject().get("uuid").getAsString());
+
+                // 下载歌单封面
+                Downloader.downloadMusicSheetPicture(sheet);
             } catch (UnsupportedOperationException e) {
                 // e.printStackTrace();
             }

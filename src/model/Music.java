@@ -54,7 +54,7 @@ public class Music {
      * 新建歌曲时使用
      * @param file 歌曲文件
      */
-    private Music(File file) {
+    public Music(File file) {
         this.path = file.getAbsolutePath();
 
         this.loadMusic();

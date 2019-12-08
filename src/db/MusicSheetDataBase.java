@@ -133,6 +133,31 @@ public class MusicSheetDataBase {
     }
 
     /**
+     * 更新歌单封面
+     * @param sheet 歌单
+     * @param picturePath 图片路径
+     * @return true   成功
+     *         false  失败
+     */
+    public static boolean updateMusicSheetPicture(MusicSheet sheet, String picturePath) {
+        boolean flag = false;
+
+        String UPDATE_MUSIC_SHEET_PICTURE_SQL = "UPDATE sheet SET picture=? WHERE id=?";
+
+        try {
+            PreparedStatement preparedStatement = DataBase.connection.prepareStatement(UPDATE_MUSIC_SHEET_PICTURE_SQL);
+            preparedStatement.setString(1, picturePath);
+            preparedStatement.setInt(2, sheet.getId());
+
+            flag = preparedStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return flag;
+    }
+
+    /**
      * Table sheet
      * ----------------------------------------------------------------------------------------------
      * |   id   |   name   |   dateCreated   |   creator   |   creatorId   |   picture   |   uuid   |
