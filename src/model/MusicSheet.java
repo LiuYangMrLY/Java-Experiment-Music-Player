@@ -3,6 +3,7 @@ package model;
 import db.MusicDataBase;
 import db.MusicSheetDataBase;
 import util.MD5Utils;
+import util.Uploader;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -138,6 +139,13 @@ public class MusicSheet {
                 this.musicArray.add(music);
             }
         }
+    }
+
+    /**
+     * 上传当前歌单到服务器
+     */
+    public void uploadMusicSheet() {
+        Uploader.uploadMusicSheet(this);
     }
 
     public int getId() {

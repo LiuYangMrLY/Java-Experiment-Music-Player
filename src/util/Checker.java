@@ -15,10 +15,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class MusicSheetChecker {
-    private static String MUSIC_SHEET_RUL = "http://service.uspacex.com/music.server/queryMusicSheets?type=all";
+public class Checker {
+    private static String MUSIC_SHEET_RUL = "http://service.uspacex.com/music.server/queryMusicSheets?type=top20";
 
-    private static String sheetResponseJson = null;
+    private static String sheetResponseJson = "";
     
     static {
         OkHttpClient client = new OkHttpClient();
@@ -76,7 +76,7 @@ public class MusicSheetChecker {
     public static void main(String[] args) {
 
 //        System.out.println(MusicSheetChecker.sheetResponseJson);
-        System.out.println(getMusicSheetList());
+//        System.out.println(getMusicSheetList());
 
 
 //        JsonParser parser = new JsonParser();

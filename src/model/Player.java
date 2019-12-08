@@ -317,4 +317,21 @@ public class Player {
             return;
         }
     }
+
+    /**
+     * 切换到上一首歌曲
+     */
+    public void pre() {
+        if (this.musicSheet == null) {
+            return;
+        }
+
+        int toPlayIndex = this.index - 1;
+        if (toPlayIndex < 0) {
+            toPlayIndex = 0;
+        }
+
+        this.selectMusic(toPlayIndex);
+        return;
+    }
 }
