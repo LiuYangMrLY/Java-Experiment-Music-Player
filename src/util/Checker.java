@@ -19,6 +19,8 @@ public class Checker {
     private static String MUSIC_SHEET_RUL = "http://service.uspacex.com/music.server/queryMusicSheets?type=top20";
 
     private static String sheetResponseJson = "";
+
+    private static ArrayList<MusicSheet> arrayList = null;
     
     static {
         OkHttpClient client = new OkHttpClient();
@@ -36,6 +38,10 @@ public class Checker {
     }
 
     public static ArrayList<MusicSheet> getMusicSheetList() {
+        if (Checker.arrayList != null) {
+            return Checker.arrayList;
+        }
+
         JsonParser parser = new JsonParser();
         JsonElement mainElement = parser.parse(sheetResponseJson);
         JsonObject mainObject = mainElement.getAsJsonObject();
@@ -68,6 +74,7 @@ public class Checker {
             array.add(sheet);
         }
 
+        Checker.arrayList = array;
         return array;
     }
 
