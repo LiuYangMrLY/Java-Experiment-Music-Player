@@ -4,6 +4,9 @@ import com.sun.org.apache.bcel.internal.generic.NEW;
 import model.Music;
 import model.MusicSheet;
 import model.Player;
+import util.Downloader;
+import view.CenterDownloadView;
+import view.CenterListView;
 import view.MainView;
 import view.SouthView;
 
@@ -24,7 +27,7 @@ public class SongPanel extends JPanel implements MouseListener {
     private String player;
     private String album;
     private String duration;
-    private static int num;
+    private int num;
     private Color color;
     private int WIDTH;
     private Music music;
@@ -84,7 +87,6 @@ public class SongPanel extends JPanel implements MouseListener {
     @Override
     public void mouseClicked(java.awt.event.MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON3){
-            System.out.println("右键被点击");
         }
         else if (e.getButton() == MouseEvent.BUTTON1){
             Player.getInstance().selectMusicSheetAndMusic(musicSheet,num - 1);
@@ -100,7 +102,10 @@ public class SongPanel extends JPanel implements MouseListener {
     @Override
     public void mouseReleased(java.awt.event.MouseEvent e) {
         if (e.isMetaDown() && isMyMusic) {
-            showPopupMenu(e.getComponent(), e.getX(), e.getY());
+            showDeleteMenu(e.getComponent(), e.getX(), e.getY(),musicSheet);
+        }
+        else if (e.isMetaDown() && (!isMyMusic)){
+            showDownloadMenu(e.getComponent(),e.getX(),e.getY(),music);
         }
     }
 
@@ -114,7 +119,7 @@ public class SongPanel extends JPanel implements MouseListener {
         this.setBackground(color);
     }
 
-    private static void showPopupMenu(Component invoker, int x, int y) {
+    private void showDeleteMenu(Component invoker, int x, int y, MusicSheet musicSheet) {
         // 创建 弹出菜单 对象
         JPopupMenu popupMenu = new JPopupMenu();
         // 创建 一级菜单
@@ -126,11 +131,35 @@ public class SongPanel extends JPanel implements MouseListener {
         deleteMenuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("复制 被点击");
+                musicSheet.deleteMusicFromMusicSheet(num - 1);
+                MainView.mJpanel.remove(MainView.center);
+                MainView.center = new CenterListView(musicSheet,true);
+                MainView.mJpanel.add(MainView.center,BorderLayout.CENTER);
+                MainView.mJpanel.updateUI();
+                System.out.println("点击了歌单");
             }
         });
         // 在指定位置显示弹出菜单
         popupMenu.show(invoker, x, y);
     }
+    private static void showDownloadMenu(Component invoker, int x, int y,Music music) {
+        // 创建 弹出菜单 对象
+        JPopupMenu popupMenu = new JPopupMenu();
+        // 创建 一级菜单
+        JMenuItem deleteMenuItem = new JMenuItem("下载");
 
+        popupMenu.add(deleteMenuItem);
+
+        // 添加菜单项的点击监听器
+        deleteMenuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CenterDownloadView.music.add(music);
+                CenterDownloadView.isDownloading = true;
+                Downloader.downloadMusic(music);
+            }
+        });
+        // 在指定位置显示弹出菜单
+        popupMenu.show(invoker, x, y);
+    }
 }

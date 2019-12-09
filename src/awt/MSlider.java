@@ -22,7 +22,7 @@ public class MSlider extends JSlider implements MouseListener{
 
     public MSlider(){
         super(0,500,0);
-        setUI(new MSliderUI(this));
+        setUI(new NSliderUI(this));
 //        setUI(new  javax.swing.plaf.metal.MetalSliderUI(){
 //            @Override
 //            public void paintThumb(Graphics g) {
