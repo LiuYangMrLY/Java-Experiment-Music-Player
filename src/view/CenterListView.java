@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import model.Music;
 import model.MusicSheet;
+import model.Player;
 import org.json.JSONException;
 import org.json.JSONObject;
 import util.Uploader;
@@ -157,6 +158,9 @@ public class CenterListView extends JPanel {
                         JOptionPane.YES_NO_CANCEL_OPTION
                 );
                 System.out.println("选择结果: " + result);
+                if (result == 0){
+
+                }
             }
         });
     }

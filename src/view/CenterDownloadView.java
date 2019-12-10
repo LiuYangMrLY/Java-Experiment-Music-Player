@@ -52,7 +52,7 @@ public class CenterDownloadView extends JPanel {
     public static void setProgressBar(Music music,int progress){
         for (int i = 0;i < downloadPanels.size(); i ++){
             if (downloadPanels.get(i).music == music){
-                downloadPanels.get(i).mProgressBar.setValue(progress);
+
             }
         }
     }

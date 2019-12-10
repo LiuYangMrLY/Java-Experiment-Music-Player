@@ -9,15 +9,18 @@ import java.awt.*;
 public class DownloadPanel extends JPanel {
     private boolean isDownloading = true;
     public Music music;
-    public MProgressBar mProgressBar = new MProgressBar(100);
     private JLabel lb_songName = new JLabel();
+    public JLabel lb_status = new JLabel();
 
     public DownloadPanel(Music music){
-        this.setPreferredSize(new Dimension(1200,100));
-
-
+        this.setPreferredSize(new Dimension(1200,50));
+        FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
+        this.setLayout(flowLayout);
         this.music = music;
+
+        setBorder(new EmptyBorder(0,20,0,20));
         lb_songName.setText(music.getName());
+        lb_songName.setPreferredSize(new Dimension(1000,45));
         //System.out.println("歌曲名：" + lb_songName.getText());
 
         initView();
@@ -29,6 +32,5 @@ public class DownloadPanel extends JPanel {
         //lb_songName.setPreferredSize(new Dimension(WIDTH,100));
         this.add(lb_songName);
 
-        this.add(mProgressBar);
     }
 }
