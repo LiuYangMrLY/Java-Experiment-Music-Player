@@ -118,6 +118,22 @@ public class Player {
     }
 
     /**
+     * 获取当前播放的歌曲
+     * @return 歌曲
+     */
+    public Music getCurrentMusic() {
+        return this.musicSheet.getMusicArray().get(this.index);
+    }
+
+    /**
+     * 获取当前正在播放歌曲在歌单中的索引位置
+     * @return 索引
+     */
+    public int getIndex() {
+        return this.index;
+    }
+
+    /**
      * 播放音乐
      */
     public void play() {
@@ -143,6 +159,20 @@ public class Player {
     public void pause() {
         if (this.mediaPlayer != null) {
             this.mediaPlayer.pause();
+        }
+    }
+
+    /**
+     * 清空当前播放器
+     */
+    public void dispose() {
+        if (this.mediaPlayer != null) {
+            this.mediaPlayer.stop();
+            this.mediaPlayer.dispose();
+
+            this.media = null;
+            this.musicSheet = null;
+            this.duration = Duration.seconds(0).toSeconds();
         }
     }
 

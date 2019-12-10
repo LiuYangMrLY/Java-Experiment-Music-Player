@@ -120,6 +120,18 @@ public class MusicSheet {
     }
 
     /**
+     * 删除当前歌单歌单
+     */
+    public void deleteMusicSheet() {
+        if (Player.getInstance().getCurrentMusicSheet() == this) {
+            Player.getInstance().dispose();
+        }
+
+        MusicSheetDataBase.deleteMusicSheet(this);
+    }
+
+
+    /**
      * 删除当前歌单中指定索引的歌曲
      * @param index 当前歌单中歌曲的索引
      */
@@ -127,6 +139,10 @@ public class MusicSheet {
         if (0 <= index && index < this.musicArray.size()) {
             MusicDataBase.deleteMusicFromMusicSheet(this.musicArray.get(index));
             this.musicArray.remove(index);
+
+            if (Player.getInstance().getCurrentMusicSheet() == this && Player.getInstance().getIndex() == index) {
+                Player.getInstance().selectMusic(index);
+            }
         }
     }
 
