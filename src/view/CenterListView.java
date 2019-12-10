@@ -6,8 +6,10 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import model.Music;
 import model.MusicSheet;
+import model.Player;
 import org.json.JSONException;
 import org.json.JSONObject;
+import util.Uploader;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -28,6 +30,7 @@ public class CenterListView extends JPanel {
     private String userName = "本地";
     private JButton btn_addMusic = new JButton("添加歌曲");
     private JButton btn_delete = new JButton("删除歌单");
+    private JButton btn_upload = new JButton("分享歌单");
 
     private boolean isMyList = false;
     private MusicSheet musicSheet;
@@ -89,7 +92,12 @@ public class CenterListView extends JPanel {
         btn_delete.setFont(new Font (Font.DIALOG, Font.BOLD, 15));
         btn_addMusic.setFont(new Font (Font.DIALOG, Font.BOLD, 15));
         btn_delete.setBackground(Color.WHITE);
+        btn_upload.setBackground(Color.WHITE);
+        btn_upload.setFont(new Font (Font.DIALOG, Font.BOLD, 15));
         initBtn();
+        mPanel.add(btn_upload);
+        mPanel.add(new JLabel());
+        mPanel.add(new JLabel());
         mPanel.add(btn_addMusic);
         mPanel.add(new JLabel());
         mPanel.add(new JLabel());
@@ -109,7 +117,7 @@ public class CenterListView extends JPanel {
         jPanel.setBorder(new EmptyBorder(50,0,0,0));
         jPanel.setBackground(new Color(245,245,245));
         for (int i = 1;i < musicSheet.getMusicArray().size() + 1;i ++){
-            jPanel.add(new SongPanel(i,musicSheet.getMusicArray().get(i - 1),false,musicSheet));
+            jPanel.add(new SongPanel(i,musicSheet.getMusicArray().get(i - 1),isMyList,musicSheet));
         }
 
         mPanel.add(jPanel);
@@ -122,6 +130,18 @@ public class CenterListView extends JPanel {
     }
 
     private void initBtn() {
+        btn_upload.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Uploader.uploadMusicSheet(musicSheet);
+                JOptionPane.showMessageDialog(
+                        MainView.mJpanel,
+                        "上传成功！",
+                        "操作提示",
+                        JOptionPane.INFORMATION_MESSAGE
+                );
+            }
+        });
         btn_addMusic.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -138,6 +158,9 @@ public class CenterListView extends JPanel {
                         JOptionPane.YES_NO_CANCEL_OPTION
                 );
                 System.out.println("选择结果: " + result);
+                if (result == 0){
+
+                }
             }
         });
     }
@@ -196,10 +219,6 @@ public class CenterListView extends JPanel {
         jPanel.setPreferredSize(new Dimension(1180,1000));
         jPanel.setBorder(new EmptyBorder(50,0,0,0));
         jPanel.setBackground(new Color(245,245,245));
-        for (int i = 1;i < 2;i ++){
-//            jPanel.add(new SongPanel(i,"Goodbyes", "Post Malone",
-//                    "Hollywood Bleeding","3:40"));
-        }
 
         mPanel.add(jPanel);
 

@@ -54,6 +54,12 @@ public class MLabel extends JLabel implements MouseListener {
     public void mouseClicked(java.awt.event.MouseEvent e) {
         System.out.println("rferfe");
         switch (name){
+            case "download":
+                MainView.mJpanel.remove(MainView.center);
+                MainView.center = new CenterDownloadView();
+                MainView.mJpanel.add(MainView.center,BorderLayout.CENTER);
+                MainView.mJpanel.updateUI();
+                break;
             case "list":
                 //MainView.mJpanel.removeAll();
 //                MainView.mJpanel.add(new WestView(),BorderLayout.WEST);
@@ -92,12 +98,14 @@ public class MLabel extends JLabel implements MouseListener {
                         "我的歌单"
                 );
                 System.out.println("输入的内容: " + inputContent);
-                MusicSheet musicSheet = new MusicSheet(inputContent,"粉色龙类物种","1114","src/pic/list_pic.png");
-                musicSheet.saveMusicSheetInDatabase();
-                MainView.mJpanel.remove(MainView.west);
-                MainView.west = new WestView();
-                MainView.mJpanel.add(MainView.west,BorderLayout.WEST);
-                MainView.mJpanel.updateUI();
+                if (inputContent != null){
+                    MusicSheet musicSheet = new MusicSheet(inputContent,"粉色龙类物种","1114","src/pic/list_pic.png");
+                    musicSheet.saveMusicSheetInDatabase();
+                    MainView.mJpanel.remove(MainView.west);
+                    MainView.west = new WestView();
+                    MainView.mJpanel.add(MainView.west,BorderLayout.WEST);
+                    MainView.mJpanel.updateUI();
+                }
                 break;
         }
     }

@@ -36,6 +36,15 @@ public class OthersListPanel extends JPanel implements MouseListener {
     public OthersListPanel(MusicSheet musicSheet){
         super();
         this.musicSheet = musicSheet;
+        lb_pic.setPreferredSize(new Dimension(300,200));
+        lb_pic.setBorder(new EmptyBorder(0,60,0,0));
+
+        if(musicSheet.getPicture() != null){
+            picPath = musicSheet.getPicture();
+        }
+        ImageIcon image = new ImageIcon(picPath);//实例化ImageIcon 对象
+        image.setImage(image.getImage().getScaledInstance(200, 200,Image.SCALE_DEFAULT ));
+        lb_pic.setIcon(image);
         setFocusable(true);
         requestFocus();
         init();
@@ -50,7 +59,7 @@ public class OthersListPanel extends JPanel implements MouseListener {
         this.setBackground(new Color(245,245,245));
 
         //lb_listName.setText(this.listName);
-        lb_pic.setIcon(new ImageIcon(this.picPath));
+        //lb_pic.setIcon(new ImageIcon(this.picPath));
         //lb_userName.setText("by " + this.userName);
 
         lb_listName.setText(musicSheet.getName());

@@ -1,14 +1,19 @@
 package util;
 
+import javafx.scene.input.DataFormat;
 import model.Music;
 import model.MusicSheet;
 import okhttp3.*;
+import view.CenterDownloadView;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.net.URLDecoder;
+import java.text.DateFormat;
 
 public class Downloader {
     /**
@@ -27,7 +32,8 @@ public class Downloader {
 
             @Override
             public void onDownloading(int progress) {
-
+                CenterDownloadView.setProgressBar(music,progress);
+                //System.out.println("progress:" + progress);
             }
 
             @Override
@@ -69,6 +75,7 @@ public class Downloader {
         String fileName = null;
 
         Request request = new Request.Builder()
+                .addHeader("Accept-Encoding", "identity")
                 .url(url)
                 .build();
 
@@ -121,6 +128,7 @@ public class Downloader {
                     long total = response.body().contentLength();
                     fos = new FileOutputStream(file);
                     long sum = 0;
+                    System.out.println("total:" + total);
                     while ((len = is.read(buf)) != -1) {
                         fos.write(buf, 0, len);
                         sum += len;
