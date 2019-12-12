@@ -9,6 +9,7 @@ import model.MusicSheet;
 import model.Player;
 import org.json.JSONException;
 import org.json.JSONObject;
+import sun.applet.Main;
 import util.Uploader;
 
 import javax.swing.*;
@@ -106,6 +107,7 @@ public class CenterListView extends JPanel {
         if (!isMyList){
             btn_delete.setVisible(false);
             btn_addMusic.setVisible(false);
+            btn_upload.setVisible(false);
         }
 
         //歌曲列表
@@ -159,7 +161,14 @@ public class CenterListView extends JPanel {
                 );
                 System.out.println("选择结果: " + result);
                 if (result == 0){
-
+                    musicSheet.deleteMusicSheet();
+                    MainView.mJpanel.remove(MainView.center);
+                    MainView.mJpanel.remove(MainView.west);
+                    MainView.center = new CenterOthersView();
+                    MainView.west = new WestView();
+                    MainView.mJpanel.add(MainView.center,BorderLayout.CENTER);
+                    MainView.mJpanel.add(MainView.west,BorderLayout.WEST);
+                    MainView.mJpanel.updateUI();
                 }
             }
         });

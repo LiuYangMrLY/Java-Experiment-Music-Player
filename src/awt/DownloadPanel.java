@@ -7,7 +7,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 public class DownloadPanel extends JPanel {
-    private boolean isDownloading = true;
+    public boolean isDownloading = true;
     public Music music;
     private JLabel lb_songName = new JLabel();
     public JLabel lb_status = new JLabel();
@@ -29,8 +29,13 @@ public class DownloadPanel extends JPanel {
     private void initView() {
         lb_songName.setBorder(new EmptyBorder(0,0,0,0));
         lb_songName.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
+        lb_status.setFont(new Font(Font.DIALOG, Font.PLAIN, 20));
+        if (music.isDownloading())
+            lb_status.setText("正在下载");
+        else lb_status.setText("已完成");
         //lb_songName.setPreferredSize(new Dimension(WIDTH,100));
         this.add(lb_songName);
+        this.add(lb_status);
 
     }
 }

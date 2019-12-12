@@ -28,6 +28,8 @@ public class Downloader {
             @Override
             public void onDownloadSuccess(File file) {
                 music.setPath(file.getAbsolutePath());
+                CenterDownloadView.setStatus(music);
+                music.setDownloading(false);
             }
 
             @Override

@@ -59,7 +59,11 @@ public class SongPanel extends JPanel implements MouseListener {
         lb_player.setPreferredSize(new Dimension(330,30));
         JLabel lb_album = new JLabel(music.getAlbum());
         lb_album.setPreferredSize(new Dimension(330,30));
-        JLabel lb_duration = new JLabel(Integer.toString((int) music.getDuration() / 60) + ":" + Integer.toString((int) music.getDuration() % 60));
+        JLabel lb_duration = new JLabel();
+        if (music.getDuration() != 0){
+            lb_duration.setText(Integer.toString((int) music.getDuration() / 60) + ":" + Integer.toString((int) music.getDuration() % 60));
+        }
+
         lb_duration.setPreferredSize(new Dimension(70,30));
         JLabel lb_num = new JLabel(String.valueOf(num));
         lb_num.setPreferredSize(new Dimension(75,30));

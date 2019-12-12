@@ -28,6 +28,7 @@ public class Music {
     private String singer;         // 歌手名
     private String album;          // 专辑名
     private double duration = 0.0; // 时长
+    private boolean isDownloading = true;
 
     @Deprecated
     public Music() {}
@@ -238,5 +239,13 @@ public class Music {
 
     public void setDuration(double duration) {
         this.duration = duration;
+    }
+
+    public boolean isDownloading() {
+        return isDownloading;
+    }
+
+    public void setDownloading(boolean downloading) {
+        isDownloading = downloading;
     }
 }

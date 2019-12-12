@@ -56,4 +56,12 @@ public class CenterDownloadView extends JPanel {
             }
         }
     }
+    public static void setStatus(Music music){
+        for (int i = 0;i < downloadPanels.size(); i ++){
+            if (downloadPanels.get(i).music == music){
+                downloadPanels.get(i).lb_status.setText("已完成");
+                downloadPanels.get(i).isDownloading = false;
+            }
+        }
+    }
 }
