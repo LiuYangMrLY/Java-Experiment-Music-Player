@@ -52,14 +52,12 @@ public class MusicDataBase {
     public static boolean deleteMusicFromMusicSheet(Music music) {
         boolean flag = false;
 
-        String DELETE_MUSIC_FROM_MUSIC_SHEET_SQL = "DELETE FROM music WHERE name=? AND sheetId=? AND uuid=? AND path=?";
+        String DELETE_MUSIC_FROM_MUSIC_SHEET_SQL = "DELETE FROM music WHERE sheetId=? AND uuid=?";
 
         try {
             PreparedStatement preparedStatement = DataBase.connection.prepareStatement(DELETE_MUSIC_FROM_MUSIC_SHEET_SQL);
-            preparedStatement.setString(1, music.getName());
-            preparedStatement.setInt(2, music.getSheetId());
-            preparedStatement.setString(3, music.getUuid());
-            preparedStatement.setString(4, music.getPath());
+            preparedStatement.setInt(1, music.getSheetId());
+            preparedStatement.setString(2, music.getUuid());
 
             flag = preparedStatement.execute();
         } catch (SQLException e) {

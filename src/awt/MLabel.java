@@ -99,7 +99,7 @@ public class MLabel extends JLabel implements MouseListener {
                 );
                 System.out.println("输入的内容: " + inputContent);
                 if (inputContent != null){
-                    MusicSheet musicSheet = new MusicSheet(inputContent,"粉色龙类物种","1114","src/pic/list_pic.png");
+                    MusicSheet musicSheet = new MusicSheet(inputContent,"临时","0000000000","src/pic/list_pic.png");
                     musicSheet.saveMusicSheetInDatabase();
                     MainView.mJpanel.remove(MainView.west);
                     MainView.west = new WestView();

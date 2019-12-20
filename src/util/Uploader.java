@@ -23,11 +23,11 @@ public class Uploader {
 
         // text
         requestBodyBuilder
-                // .addFormDataPart("musicSheetUuid", sheet.getUuid())
+                .addFormDataPart("musicSheetUuid", sheet.getUuid())
                 .addFormDataPart("musicSheetName", sheet.getName())
                 .addFormDataPart("musicSheetCreatorId", sheet.getCreatorId())
                 .addFormDataPart("musicSheetCreator", sheet.getCreator())
-                // .addFormDataPart("musicSheetDateCreated", sheet.getDateCreated())
+                .addFormDataPart("musicSheetDateCreated", sheet.getDateCreated())
                 .addFormDataPart("musicSheetPicture", sheet.getPicture());
 
         // picture

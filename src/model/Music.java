@@ -90,7 +90,6 @@ public class Music {
 
             Date endDate = new Date();
             while (music.isLoading() || (endDate.getTime() - startDate.getTime()) < 1000) {
-                System.out.println("0000");
                 endDate = new Date();
             }
 
