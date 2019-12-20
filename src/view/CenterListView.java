@@ -32,6 +32,7 @@ public class CenterListView extends JPanel {
     private JButton btn_addMusic = new JButton("添加歌曲");
     private JButton btn_delete = new JButton("删除歌单");
     private JButton btn_upload = new JButton("分享歌单");
+    private JButton btn_changePic = new JButton("修改封面");
 
     private boolean isMyList = false;
     private MusicSheet musicSheet;
@@ -54,6 +55,11 @@ public class CenterListView extends JPanel {
 
         //存放歌单图片
         lb_list_pic.setBorder(new EmptyBorder(0,60,0,0));
+        String path = musicSheet.getPicture();
+        ImageIcon image = new ImageIcon(path);
+        image.setImage(image.getImage().getScaledInstance(150, 150,Image.SCALE_DEFAULT ));
+        lb_list_pic.setIcon(image);
+
         mPanel.add(lb_list_pic);
 
         //中间的分割线
@@ -95,11 +101,16 @@ public class CenterListView extends JPanel {
         btn_delete.setBackground(Color.WHITE);
         btn_upload.setBackground(Color.WHITE);
         btn_upload.setFont(new Font (Font.DIALOG, Font.BOLD, 15));
+        btn_changePic.setBackground(Color.WHITE);
+        btn_changePic.setFont(new Font (Font.DIALOG, Font.BOLD, 15));
         initBtn();
         mPanel.add(btn_upload);
         mPanel.add(new JLabel());
         mPanel.add(new JLabel());
         mPanel.add(btn_addMusic);
+        mPanel.add(new JLabel());
+        mPanel.add(new JLabel());
+        mPanel.add(btn_changePic);
         mPanel.add(new JLabel());
         mPanel.add(new JLabel());
         mPanel.add(btn_delete);
@@ -170,6 +181,12 @@ public class CenterListView extends JPanel {
                     MainView.mJpanel.add(MainView.west,BorderLayout.WEST);
                     MainView.mJpanel.updateUI();
                 }
+            }
+        });
+        btn_changePic.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showPicAddDialog(MainView.mJpanel,musicSheet);
             }
         });
     }
@@ -280,6 +297,38 @@ public class CenterListView extends JPanel {
             System.out.println("点击了歌单");
 
             System.out.println("打开文件: " + file.getAbsolutePath() + "\n\n");
+        }
+    }
+    private static void showPicAddDialog(Component parent,MusicSheet musicSheet) {
+        // 创建一个默认的文件选取器
+        JFileChooser fileChooser = new JFileChooser();
+
+        // 设置默认显示的文件夹为当前文件夹
+        fileChooser.setCurrentDirectory(new File("."));
+
+        // 设置文件选择的模式（只选文件、只选文件夹、文件和文件均可选）
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        // 设置是否允许多选
+        fileChooser.setMultiSelectionEnabled(false);
+
+        // 添加可用的文件过滤器（FileNameExtensionFilter 的第一个参数是描述, 后面是需要过滤的文件扩展名 可变参数）
+        fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("zip(*.zip, *.rar)", "zip", "rar"));
+        // 设置默认使用的文件过滤器
+        //fileChooser.setFileFilter(new FileNameExtensionFilter("image(*.jpg, *.png, *.gif)", "jpg", "png", "gif"));
+
+        // 打开文件选择框（线程将被阻塞, 直到选择框被关闭）
+        int result = fileChooser.showOpenDialog(parent);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            // 如果点击了"确定", 则获取选择的文件路径
+            File file = fileChooser.getSelectedFile();
+            musicSheet.setPicture(file.getAbsolutePath());
+
+            MainView.mJpanel.remove(MainView.center);
+            MainView.center = new CenterListView(musicSheet,true);
+            MainView.mJpanel.add(MainView.center,BorderLayout.CENTER);
+
+            MainView.mJpanel.updateUI();
         }
     }
 }
