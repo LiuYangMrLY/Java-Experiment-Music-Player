@@ -16,7 +16,7 @@ public class MusicSheet {
     private String dateCreated;
     private String creator;
     private String creatorId;
-    private String picture;
+    private String picture = "src/pic/list_pic.png";
     private String uuid;
 
     // 其他属性  other attributes
