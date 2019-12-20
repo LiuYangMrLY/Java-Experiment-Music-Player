@@ -197,6 +197,11 @@ public class MusicSheet {
         MusicSheetDataBase.updateMusicSheetPicture(this, this.picture);
     }
 
+    public void updatePicture(String picture) {
+        this.picture = picture;
+        MusicSheetDataBase.updateMusicSheetPicture(this, this.picture);
+    }
+
     public int getId() {
         return id;
     }
@@ -247,10 +252,6 @@ public class MusicSheet {
 
     public void setCreatorId(String creatorId) {
         this.creatorId = creatorId;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
     }
 
     public void setUuid(String uuid) {

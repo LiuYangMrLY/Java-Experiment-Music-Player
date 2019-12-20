@@ -52,7 +52,7 @@ public class Downloader {
         download(DOWNLOAD_MUSIC_SHEET_PICTURE_RUL_PREFIX + sheet.getUuid(), MUSIC_SHEET_PICTURE_FOLDER, new OnDownloadListener() {
             @Override
             public void onDownloadSuccess(File file) {
-                sheet.setPicture(file.getAbsolutePath());
+                sheet.updatePicture(file.getAbsolutePath());
             }
 
             @Override

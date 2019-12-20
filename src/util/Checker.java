@@ -57,7 +57,7 @@ public class Checker {
                 sheet.setDateCreated(element.getAsJsonObject().get("dateCreated").getAsString());
                 sheet.setId(element.getAsJsonObject().get("id").getAsInt());
                 sheet.setName(element.getAsJsonObject().get("name").getAsString());
-                sheet.setPicture(element.getAsJsonObject().get("picture").getAsString());
+                sheet.updatePicture(element.getAsJsonObject().get("picture").getAsString());
                 sheet.setUuid(element.getAsJsonObject().get("uuid").getAsString());
 
                 // 下载歌单封面

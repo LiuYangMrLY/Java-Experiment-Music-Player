@@ -119,6 +119,7 @@ public class CenterListView extends JPanel {
             btn_delete.setVisible(false);
             btn_addMusic.setVisible(false);
             btn_upload.setVisible(false);
+            btn_changePic.setVisible(false);
         }
 
         //歌曲列表
@@ -322,7 +323,7 @@ public class CenterListView extends JPanel {
         if (result == JFileChooser.APPROVE_OPTION) {
             // 如果点击了"确定", 则获取选择的文件路径
             File file = fileChooser.getSelectedFile();
-            musicSheet.setPicture(file.getAbsolutePath());
+            musicSheet.updatePicture(file.getAbsolutePath());
 
             MainView.mJpanel.remove(MainView.center);
             MainView.center = new CenterListView(musicSheet,true);
